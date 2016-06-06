@@ -1,0 +1,169 @@
+properties:
+  address:
+    type: string
+    default:
+      "100 E Broadway"
+  strreetName:
+    type: string
+    default:
+      "Broadway"
+  streetnumber:
+    type: string
+    default:
+      "100"
+  streetDirection:
+    type: string
+    default:
+      "E"
+  unitNumber:
+    type: string
+    default:
+      "null"
+  cityName:
+    type: string
+    default:
+      "Eugene"
+  countyName:
+    type: string
+    default:
+      "Lane"
+  state:
+    type: string
+    default:
+      "OR"
+  zipcode:
+    type: string
+    default:
+      "97401"
+  listingPrice:
+    type: string
+    default:
+      "1,000,000,000"
+  listingID:
+    type: string
+    default:
+      "123"
+  remarksConcat:
+    type: string
+    default:
+      "IDX Broooookkkkkkkkkkkeeeeeeeeerrr"
+  rntLse:
+    type: string
+    default:
+      "neither"
+  rntLsePrice:
+    type: string
+    default:
+      "0"
+  propStatus:
+    type: string
+    default:
+      "active"
+  bedrooms:
+    type: string
+    default:
+      "3"
+  totalBaths:
+    type: string
+    default:
+      "4"
+  fullBaths:
+    type: string
+    default:
+      "1"
+  partialBaths:
+    type: string
+    default:
+      "3"
+  latitude:
+    type: string
+    default:
+      "44.0430099"
+  longitude:
+    type: string
+    default:
+      "-123.0773734"
+  acres:
+    type: string
+    default:
+      "0"
+  sqFt:
+    type: string
+    default:
+      "15,000"
+  displayAddress:
+    type: string
+    default:
+      "y"
+  listingAgentID:
+    type: string
+    default:
+      "10"
+  mlsPtID:
+    type: string
+    default:
+      "1"
+  mlsPhotoCount:
+    type: string
+    default:
+      "0"
+  parentPtID:
+    type: string
+    default:
+      "1"
+  soldPrice:
+    type: string
+    default:
+      "null"
+  archiveStatus:
+    type: string
+    default:
+      "pending"
+  display:
+    type: string
+    default:
+      "y"
+  price:
+    type: string
+    default:
+      "1,000,000,000"
+  detailsURL:
+    type: string
+    default:
+      "a00\/123"
+  idxID:
+    type: string
+    default:
+      "a000"
+  idxProptype:
+    type: string
+    default:
+      "Commercial"
+  idxStatus:
+     type: string
+     default:
+      "1000"
+  mediaData:
+   type: string
+   default:
+      "[]"
+  ohCount:
+    type: string
+    default:
+      "3"
+  vtCount:
+    type: string
+    default:
+      "1"
+  featured:
+    type: string
+    default:
+      "y"
+  image:
+    type: array
+    default:
+      "[]"
+  fullDetailsURL:
+      type: string
+      default:
+        "https:idxbroker.com"

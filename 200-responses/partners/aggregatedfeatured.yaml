@@ -1,0 +1,218 @@
+properties:
+  acres:
+    type: string
+    default:
+      "7"
+  address:
+    type: string
+    default:
+      "100 E Broadway"
+  bedrooms:
+    type: string
+    default:
+      "2"
+  cityID:
+    type: string
+    default:
+      "420"
+  cityName:
+    type: string
+    default:
+      "Eugene"
+  colistingAgentID:
+    type: string
+    default:
+      ""
+  colistingOfficeID:
+    type: string
+    default:
+      ""
+  countyID:
+    type: string
+    default:
+      "1234"
+  countyName:
+    type: string
+    default:
+      "Lane"
+  dateAdded:
+    type: string
+    default:
+      "0000-00-00 00:00:00"
+  displayAddress:
+    type: string
+    default:
+      ""
+  fullBaths:
+    type: string
+    default:
+      "3"
+  latitude:
+    type: string
+    default:
+      "44.0430099"
+  listingAgentID:
+    type: string
+    default:
+      "99"
+  listingID:
+    type: string
+    default:
+      "M1452359"
+  listingOfficeID:
+    type: string
+    default:
+      "idxdemooffice2"
+  listingPrice:
+    type: string
+    default:
+      "1,000,000,000"
+  longitude:
+    type: string
+    default:
+      "-123.0773734"
+  mlsPtID:
+    type: string
+    default:
+      "1"
+  partialBaths:
+    type: string
+    default:
+      "0"
+  propStatus:
+    type: string
+    default:
+      "A"
+  propStatus:
+    type: string
+    default:
+      "Single Family"
+  remarksConcat:
+    type: string
+    default:
+      "I like turtles"
+  rntLse:
+    type: string
+    default:
+      "rental"
+  rntLsePrice:
+    type: string
+    default:
+      "0"
+  rntLsePriceOffSeason:
+    type: string
+    default:
+      "0"
+  sqFt:
+    type: string
+    default:
+      "100000"
+  state:
+    type: string
+    default:
+      "OREGON"
+  streetDirection:
+    type: string
+    default:
+      "E"
+  streetName:
+    type: string
+    default:
+      "100 Broadway"
+  streetNumber:
+    type: string
+    default:
+      "100"
+  totalBaths:
+    type: string
+    default:
+      "3"
+  unitNumber:
+    type: string
+    default:
+      ""
+  yearBuilt:
+    type: string
+    default:
+      "2016"
+  zipcode:
+    type: string
+    default:
+      "97401"
+  zip4:
+    type: string
+    default:
+      "0909"
+  zoning:
+    type: string
+    default:
+      ""
+  mlsPhotoCount:
+    type: string
+    default:
+      "0"
+  parentPtID:
+    type: string
+    default:
+      "1"
+  dateModified:
+    type: string
+    default:
+      "0000-00-00 00:00:00"
+  openHouses:
+    type: string
+    default:
+      "1000"
+  virtualTours:
+    type: string
+    default:
+      "0"
+  price:
+    type: string
+    default:
+      "1,000,000,000"
+  detailsURL:
+    type: price
+    default:
+      "a000\/M1452359"
+  idxID:
+    type: string
+    default:
+      "a000"
+  idxPropType:
+    type: string
+    default:
+      "Single Family"
+  idxStatus:
+    type: string
+    default:
+      "active"
+  viewCount:
+    type: string
+    default:
+      "1000"
+  mediaData:
+    type: array
+    default:
+      []
+  ohCount:
+    type: string
+    default:
+      "0"
+  vtCount:
+    type: string
+    default:
+      "0"
+  featured:
+    type: string
+    default:
+      "y"
+  image:
+    []
+  fullDetailsURL:
+    type: string
+    default:
+      "http:\/\/30daydemo.idxbroker.com\/idx\/details\/homes\/a000\/M1452359\/100-E-100-Brodway-Eugene-97401-M1452359"
+
+
+

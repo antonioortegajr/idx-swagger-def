@@ -1,0 +1,9 @@
+properties:
+  id:
+    type: string
+    default:
+      "a000"
+  name:
+    type: string
+    default:
+      "DEMO MLS Postal Codes List"

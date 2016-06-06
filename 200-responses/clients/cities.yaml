@@ -1,0 +1,13 @@
+properties:
+  id:
+    type: string
+    default:
+      "100"
+  name:
+    type: string
+    default:
+      "Eugene"
+  stateAbrv:
+    type: string
+    default:
+      "OR"

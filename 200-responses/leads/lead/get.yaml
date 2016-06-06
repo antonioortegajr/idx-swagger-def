@@ -1,0 +1,41 @@
+properties:
+  id:
+    type: string
+    default:
+      "24601"
+  firstName:
+    type: string
+    defalut:
+      "Antonio"
+  lastName:
+    type: string
+    default:
+       "Ortega"
+  email:
+    type: string
+    default:
+      "not_my_email_FAKE_EMAIL.COM"
+  agentOwner:
+    type: string
+    default:
+      "007"
+  disabled:
+    type: string
+    default:
+      "n"
+  canLogin:
+    type: string
+    default:
+      "y"
+  receiveUpdates:
+    type: string
+    default:
+      "y"
+  subscribeDate:
+    type: string
+    default:
+      "2015-12-03 18:55:58"
+  lastEdited:
+    type: string
+    default:
+      "0000-00-00 00:00:00"

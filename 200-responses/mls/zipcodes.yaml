@@ -1,0 +1,13 @@
+properties:
+  zipcode:
+    type: string
+    default:
+      "97401"
+  stateAbrv:
+    type: string
+    default:
+      "OR"
+  occurances:
+    string: type
+    default:
+      "54"

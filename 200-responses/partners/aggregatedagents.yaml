@@ -1,0 +1,141 @@
+properties:
+  userID:
+    type: string
+    default:
+      "1234"
+  agentCategory:
+    type: string
+    default:
+      "agnet"
+  agentFirstName:
+    type: string
+    default:
+      "Antonio"
+  agentLastName:
+    type: string
+    default:
+      "Ortega"
+  agentDisplayName:
+    type: string
+    default:
+      "Antonio ORtega"
+  agentEmail:
+    type: string
+    default:
+      ""
+  agentTitle:
+    type: string
+    default:
+      "Super King"
+  address:
+    type: string
+    default:
+      "100 E Broadway"
+  city:
+    type: string
+    default:
+      "Eugene"
+  country:
+    type: string
+    default:
+      "United States"
+  zipCode:
+    type: string
+    default:
+      "97401"
+  agentHomePhone:
+    type: string
+    default:
+      "1234567890"
+  agentHomeFax:
+    type: string
+    default:
+      ""
+  agentOfficeFax:
+    type: string
+    default:
+      ""
+  agentCellPhone:
+    type: string
+    default:
+      "1123456789"
+  agentPager:
+    type: string
+    default:
+      "0987654321"
+  agentPhotoURL:
+    type: string
+    default:
+      ""
+  agentURL:
+    type: string
+    default:
+      "http:\/\/idxbroker.com\/"
+  agentURLdisplay:
+    type: string
+    default:
+      ""
+  lastLoginDate:
+    type: string
+    default:
+      "0000-00-00 00:00:00"
+  accountCreated:
+    type: string
+    default:
+      "2013-01-23 17:49:54"
+  lastUpdate:
+    type: string
+    default:
+      "2013-10-01 18:09:12"
+  redirectToSite:
+    type: string
+    default:
+      "n"
+  linkOnRoster:
+    type: string
+    default:
+      "y"
+  displayOnRoster:
+    type: string
+    default:
+      "y"
+  bioDetails:
+    type: type
+    default:
+      ""
+  featuredInWidget:
+    type: string
+    default:
+      "y"
+  propUpdateSignature:
+    type: string
+    default:
+      ""
+  agentBioURL:
+    type: string
+    default:
+      "\/idx\/agent\/4202\/antonio-ortega"
+  agentContactPhone:
+    type: string
+    default:
+      "1234567890"
+  username:
+    type: string
+    default:
+      "antonioortegjar"
+  password:
+    type: string
+    default:
+      "pasword123"
+  languages:
+    type: string
+    default:
+      "spanish"
+  mlsMembership:
+    type: string
+    default:
+      "DEMO"
+  mlsName:
+    type: string
+    default:
+      "DEMO MLS"

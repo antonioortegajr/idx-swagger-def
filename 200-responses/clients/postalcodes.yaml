@@ -1,0 +1,13 @@
+properties:
+  id:
+    type: string
+    default:
+      "616"
+  name:
+    type: string
+    default:
+      "1610"
+  stateAbrv:
+    type: string
+    default:
+      "OR"

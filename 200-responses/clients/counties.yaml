@@ -1,0 +1,13 @@
+properties:
+  id:
+    type: string
+    default:
+      "200"
+  name:
+    type: string
+    default:
+      "Lane"
+  stateAbrv:
+    type: string
+    default:
+      "OR"

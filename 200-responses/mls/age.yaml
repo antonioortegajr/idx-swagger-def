@@ -1,0 +1,11 @@
+properties:
+  lastDownload:
+    type: string
+    description: The last time data was downloaded from the MLS
+    default:
+      "2016-03-23 11:50:42"
+  lastProcess:
+    type: string
+    description: The last time IDX processed the downloaded data
+    default:
+      "2016-03-23 13:40:50"

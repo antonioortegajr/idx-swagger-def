@@ -1,0 +1,21 @@
+properties:
+  countyID:
+    type: string
+    default:
+      "789"
+  countyName:
+    type: string
+    default:
+      "Lane"
+  stateAbrv:
+    type: string
+    default:
+      "OR"
+  mlsPtId:
+    string: type
+    default:
+      "1"
+  occurances:
+    string: type
+    default:
+      "54"

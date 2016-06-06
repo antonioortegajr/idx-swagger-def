@@ -1,0 +1,9 @@
+properties:
+  priceSum:
+    type: string
+    default:
+      "5941606050"
+  priceByPt:
+    type: string
+    default:
+      "1"

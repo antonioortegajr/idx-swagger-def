@@ -1,0 +1,17 @@
+properties:
+  name:
+    type: string
+    default:
+      "subdivision"
+  displayName:
+    type: string
+    default:
+      "Subdivision"
+  mlsPtID:
+    type: string
+    default:
+      "1"
+  parentPtID:
+    type: string
+    default:
+      "1"

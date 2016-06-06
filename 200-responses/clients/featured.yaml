@@ -1,0 +1,165 @@
+properties:
+  address:
+    type: string
+    default:
+      "100 E Broadway"
+  streetName:
+    type: string
+    default:
+      "Braodway"
+  streetNumber:
+    type: string
+    default:
+      "100"
+  streetDirection:
+    type: string
+    default:
+      "E"
+  unitNumber:
+    type: string
+    default:
+      " "
+  cityName:
+    type: string
+    default:
+      "Eugene"
+  countyName:
+    type: string
+    default:
+      "Lane"
+  state:
+    type: string
+    default:
+      "OR"
+  zipcode:
+    type: string
+    default:
+      "97401"
+  zip4:
+    type: string
+    default:
+      "0000"
+  listingPrice:
+    type: string
+    default:
+      "1,000,000,000"
+  listingID:
+    type: string
+    default:
+      "a-765"
+  listingAgentID:
+    type: string
+    default:
+      "idxdemoagent"
+  listingOfficeID:
+    type: string
+    default:
+      "idxdemooffice"
+  remarksConcat:
+    type: string
+    default:
+      "🦄🦄 If you like it put a ring on it 🦄🦄"
+  rntLse:
+    type: string
+    default:
+      "lease"
+  rntLsePrice:
+    type: string
+    default:
+      "10"
+  rntLsePriceOffSeason:
+    type: string
+    default:
+      "10"
+  propStatus:
+    type: string
+    default:
+      "A"
+  bedrooms:
+    type: string
+    default:
+      "100"
+  totalBaths:
+    type: string
+    default:
+      "200"
+  fullBaths:
+    type: string
+    default:
+      "100"
+  partialBaths:
+    type: string
+    default:
+      "100"
+  mlsPtID:
+    type: string
+    default:
+      "1"
+  parentPtID:
+    type: string
+    default:
+      "1"
+  latitude:
+    type: string
+    default:
+      "44.0430099"
+  longitude:
+    type: string
+    default:
+      "-123.0773734"
+  acres:
+    type: string
+    default:
+      "1000000"
+  sqFt:
+    type: string
+    default:
+      "1000000"
+  displayAddress:
+    type: string
+    default:
+      "100 E Broadway"
+  mlsPhotoCount:
+    type: string
+    default:
+      "100"
+  detailsURL:
+    type: string
+    default:
+      "a00/a-765"
+  idxPropType:
+    type: string
+    default:
+      "Single Family"
+  idxStatus:
+    type: string
+    default:
+      "active"
+  viewCount:
+    type: string
+    default:
+      "10"
+  mediaData:
+    type: string
+    default:
+      "10"
+  ohCount:
+    type: string
+    default:
+      "1000"
+  vtCount:
+    type: string
+    default:
+      "100"
+  featured:
+    type: string
+    default:
+      "y"
+  image:
+    type: array
+    default:
+      "array of images"
+  fullDetailsURL:
+    type: string
+    default:
+      "https://idxbroker.com"

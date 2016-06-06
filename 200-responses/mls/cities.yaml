@@ -1,0 +1,21 @@
+properties:
+  cityID:
+    type: string
+    default:
+      "789"
+  cityName:
+    type: string
+    default:
+      "Eugene"
+  stateAbrv:
+    type: string
+    default:
+      "OR"
+  mlsPtId:
+    string: type
+    default:
+      "1"
+  occurances:
+    string: type
+    default:
+      "54"

@@ -1,0 +1,105 @@
+properties:
+  agentCategory:
+    type: string
+    default:
+      "agent"
+  agentFirstName:
+    type: string
+    default: 
+      "Antonio"
+  agentLastName:
+    type: string
+    default: 
+      "Ortega"
+  agentDisplayName:
+    type: string
+    default: 
+      "antonioortegajr"
+  agentEmail:
+    type: string
+    default: 
+      "antonio@Not_My_Email.com"
+  agentTitle:
+    type: string
+    default: 
+      "secret agent"
+  address:
+    type: string
+    default: 
+      "100 E Broadway"
+  city:
+    type: string
+    default: 
+      "Eugene"
+  stateProvince:
+    type: string
+    default: 
+      "OR"
+  country:
+    type: string
+    default: 
+      "Unitied States"
+  zipCode:
+    type: string
+    default: 
+      "97401"
+  agentHomePhone:
+    type: string
+    default: 
+      "1234567890"
+  agentHomeFax:
+    type: string
+    default: 
+      "1234567890"
+  agentOfficePhone:
+    type: string
+    default: 
+      "1234567890"
+  agentCellPhone:
+    type: string
+    default: 
+      "1234567890"
+  agentPager:
+    type: string
+    default: 
+      "0"
+  agentPhotoURL:
+    type: string
+    default: 
+      "null"
+  agentURL:
+    type: string
+    default: 
+      "https://idxbroker.com"
+  agentURLdisplay:
+    type: string
+    default: 
+      "https://idxbroker.com"
+  lastLoginDate:
+    type: string
+    default: 
+      "2015-01-04 02:10:00"
+  accountCreated:
+    type: string
+    default: 
+      "2015-01-04 01:23:00"
+  lastUpdate:
+    type: string
+    default: 
+      "2015-01-04 02:34:00"
+  redirectToSite:
+    type: string
+    default: 
+      "y"
+  linkOnRoster:
+    type: string
+    default: 
+      "n"
+  displayOnRoster:
+    type: string
+    default: 
+      "y"
+  bioDetails:
+    type: string
+    default: 
+      "I like turtles"

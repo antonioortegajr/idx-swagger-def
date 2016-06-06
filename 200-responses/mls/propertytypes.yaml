@@ -1,0 +1,25 @@
+properties:
+  mlsPtID:
+    type: string
+    default:
+      "1"
+  mlsPropertyType:
+    type: string
+    default:
+      "Residential"
+  parentPtID:
+    type: string
+    default:
+      "1"
+  parentPropertyType:
+    type: string
+    default:
+      "Single Family Residential"
+  parentPt:
+    type: string
+    default:
+      "sfr"
+  propSubTypes:
+    type: string
+    default:
+      ""

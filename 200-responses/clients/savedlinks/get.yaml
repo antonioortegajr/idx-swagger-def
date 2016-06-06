@@ -1,0 +1,49 @@
+properties:
+  id:
+    type: string
+    default:
+      "616"
+  linkName:
+    type: string
+    default:
+      "DEMO Saved Link"
+  linkTitle:
+    type: string
+    default:
+      "DEMO Saved Link"
+  queryString:
+    type: string
+    default:
+      "page=listings&pt=sfr&city[0]=690&city[1]=1745&city[2]=2197&city[3]=2889&city[4]=3497&tb=0&srt=prd"
+  timesViewed:
+    type: string
+    default:
+      "1000"
+  featured:
+    type: string
+    default:
+      "y"
+  created:
+    type: string
+    default:
+      "2013-08-27 16:02:01"
+  category:
+    type: string
+    default:
+      "search"
+  addedViaAPI:
+    type: string
+    default:
+      "y"
+  lastEdited:
+    type: string
+    default:
+      "2014-08-19 18:54:22"
+  url:
+    type: string
+    default:
+      "http://www.idxbroker.com/developers/integrations"
+  uid:
+    type: string
+    default:
+      "2806-50875"

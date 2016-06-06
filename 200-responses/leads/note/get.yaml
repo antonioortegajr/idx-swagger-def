@@ -1,0 +1,17 @@
+properties:
+  id:
+    type: string
+    default:
+      "80570"
+  note:
+    type: string
+    default:
+      "Lead signed up with IP address: 69.163.144.120"
+  created:
+    type: string
+    default:
+      "2016-03-22 23:30:38"
+  lastAltered:
+    type: string
+    default:
+      "0000-00-00 00:00:00"

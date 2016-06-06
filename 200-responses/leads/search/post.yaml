@@ -1,0 +1,13 @@
+properties:
+  id:
+    type: string
+    default:
+      "07001"
+  name:
+    type: string
+    default:
+      "07001"
+  stateAbrv:
+    type: string
+    default:
+      "OR"

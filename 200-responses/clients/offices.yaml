@@ -1,0 +1,81 @@
+properties:
+  id:
+    type: string
+    default:
+      "616"
+  accountID:
+    type: string
+    default:
+      "1610"
+  officeName:
+    type: string
+    default:
+      "DEMO Office Name"
+  officeCode:
+    type: string
+    default:
+      "410"
+  officeEmail:
+    type: string
+    default:
+      "fake@fake_email.com"
+  address:
+    type: string
+    default:
+      "100 E Broadway"
+  city:
+    type: string
+    default:
+      "Eugene"
+  stateProvince:
+    type: string
+    default:
+      "OR"
+  zipCode:
+    type: string
+    default:
+      "97401"
+  accountCreated:
+    type: string
+    default: 
+      "2014-02-03 17:00:54"
+  lastUpdate:
+    type: string 
+    default: 
+      "2014-11-06 16:58:06"
+  officePhone:
+    type: string
+    default: 
+      "732-361-0800"
+  officeFax:
+    type: string
+    default:
+      "732-361-0801"
+  officeAddlContact:
+    type: string
+    default:
+      "fakeemail@fake.com"
+  officePhotoURL:
+    type: string 
+    default:
+      "http://clientphotos.idxbroker.com/office/officePhoto-2806-89"
+  officeDescription:
+    type: string
+    default:
+      "We like it"
+  position:
+    type: string
+    default:
+      "0"
+  officeWrapperSetting:
+    type: string 
+    default:
+      "y"
+  displayOnRoster:
+    type: string
+    default:
+      "y"
+  officeURL:
+    type: string 
+    default:
+      "https://goo.gl/maps/sFoc6BZtfQu"

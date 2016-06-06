@@ -1,0 +1,25 @@
+properties:
+  accountID:
+  type: string
+  default:
+    "347"
+  companyName:
+    type: string
+    default:
+      "30 Day Demo"
+  displayName:
+    type: string
+    default:
+      "30 Day Demo"
+  accountStatus:
+    type: string
+    default:
+      "enabled"
+  accountType:
+    type: string
+    default:
+      "IDX Broker Platinum"
+  apikey:
+    type: string
+    default:
+      "8_3CbCCaC0csm4G4cpawz3"

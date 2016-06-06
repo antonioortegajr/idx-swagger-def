@@ -1,0 +1,9 @@
+properties:
+  compnent:
+    type: string
+    default:
+      "clients"
+  enabled:
+    type: string
+    default:
+      "y"

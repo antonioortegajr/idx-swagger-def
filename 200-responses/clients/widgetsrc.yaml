@@ -1,0 +1,13 @@
+properties:
+  uid:
+    type: string
+    default:
+      "12085-42195"
+  name:
+    type: string
+    default:
+      "123456789"
+  url:
+    type: string
+    default:
+      "http://idxdemostie.idxbroker.com/idx/mapwidgetjs.php?widgetid=42195"

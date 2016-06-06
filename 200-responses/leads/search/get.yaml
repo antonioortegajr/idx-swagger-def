@@ -1,0 +1,13 @@
+properties:
+  id:
+    type: string
+    default:
+      "20197"
+  searchName:
+    type: string
+    default:
+      "test search"
+  search:
+    test: string
+    default:
+      ""

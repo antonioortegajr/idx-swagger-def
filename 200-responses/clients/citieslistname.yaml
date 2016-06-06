@@ -1,0 +1,9 @@
+properties:
+  id:
+    type: string
+    default:
+      "100"
+  name:
+    type: string
+    default:
+      "IDX Broker DEMO City List"

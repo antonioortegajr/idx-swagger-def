@@ -1,0 +1,6 @@
+properties:
+  version:
+    type: string
+    default:
+      "1.2.3"
+    description: This is the current default API version.

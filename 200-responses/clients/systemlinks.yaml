@@ -1,0 +1,477 @@
+properties:
+  uid:
+    type: string
+    default:
+      "45601-543"
+  name:
+    type: string
+    default:
+      "Address"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/search/address"
+  category:
+    type: string
+    default: 
+      "search"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3325"
+  name:
+    type: string
+    default:
+      "Advanced Search"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/search/advanced"
+  category:
+    type: string
+    default: "search"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3326"
+  name:
+    type: string
+    default:
+      "Basic Search"
+  url:
+    type: string
+    default: "http://yoursubdomain.idxbroker.com/idx/search/basic"
+  category:
+    type: string
+    default:
+      "search"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string 
+    default: 
+      "12085-3327"
+  name:
+    type: string
+    default:
+      "Email Update Signup"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/search/emailupdatesignup"
+  category:
+    type: string
+    default:
+      "search"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3328"
+  name:
+    type: string
+    default:
+      "Listing ID"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/search/listingid"
+  category:
+    type: string
+    default:
+      "search"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3333"
+  name:
+    type: string
+    default: "Map Search"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/map/mapsearch"
+  category:
+    type: string
+    default:
+      "map"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3335"
+  name:
+    type: string
+    default:
+      "Featured"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/featured"
+  category:
+    type: string
+    default:
+      "results"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3336"
+  name:
+    type: string
+    default:
+      "Featured Open Houses"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/featuredopenhouse"
+  category:
+    type: string
+    default:
+      "results"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3337"
+  name:
+    type: string
+    default:
+      "Featured Virtual Tours"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/featuredvirtualtour"
+  category:
+    type: string
+    default:
+      "results"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3330"
+  name:
+    type: string
+    default:
+      "Results"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/results/listings"
+  category:
+    type: string
+    default:
+      "results"
+  systemresults:  
+    type: string
+    default:
+      "true"
+  uid:
+    type: string
+    default:
+      "12085-3339"
+  name:
+    type: string
+    default:
+      "Sold/Pending"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/soldpending"
+  category:
+    type: string
+    default: "results"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3340"
+  name:
+    type: string
+    default:
+      "Supplemental"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/supplemental"
+  category:
+    type: string
+    default:
+      "results"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3331"
+  name:
+    type: string
+    default:
+      "Details"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/details/listing"
+  category:
+    type: string
+    default:
+      "details"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3341"
+  name:
+    type: string
+    default:
+      "Link Showcase"
+  url: 
+   type: string
+   default:
+      "http://yoursubdomain.idxbroker.com/idx/linkshowcase"
+  category:
+    type: string
+    default:
+      "listing"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3342"
+  name:
+    type: string
+    default:
+      "Mortgage Calculator"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/mortgage"
+  category:
+    type: string
+    default:
+      "listing"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3344"
+  name:
+    type: string
+    default:
+      "Contact"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/contact"
+  category:
+    type: string
+    default:
+      "contact"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3345"
+  name:
+    type: string
+    default:
+      "Home Valuation"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/homevaluation"
+  category:
+    type: string
+    default:
+      "contact"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3348"
+  name:
+    type: string
+    default:
+      "My Account"
+  url:  
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/myaccount"
+  category:
+    type: string
+    default:
+      "user"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3349"
+  name:
+    type: string
+    default:
+      "User Login"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/userlogin"
+  category:
+    type: string
+    default:
+       "user"
+  systemresults:
+    type: string
+    default: 
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3350"
+  name:
+    type: string
+    default:
+      "User Signup"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/usersignup"
+  category:
+    type: string
+    default:
+      "user"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid: 
+   type: string
+   default:
+     "12085-3353"
+  name:
+    type: string
+    default:
+      "Browse by City"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/searchbycity"
+  category:
+    type: string
+    default:
+      "other"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3354"
+  name: 
+   type: string
+   default:
+     "Sitemap"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/sitemap"
+  category:
+    type: string
+    default:
+      "other"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3355"
+  name:
+    type: string
+    default:
+      "XML Sitemap"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/sitemap/xml/12085d19660"
+  category:
+    type: string
+    default:
+      "other"
+  systemresults:
+    type: string
+    default:
+      "false"
+  uid:
+    type: string
+    default:
+      "12085-3332"
+  name:
+    type: string
+    default:
+      "Roster"
+  url:
+    type: string
+    default:
+      "http://yoursubdomain.idxbroker.com/idx/roster"
+  category:
+    type: string
+    default:
+      "roster"
+  systemresults:
+    type: string
+    default:
+      "false"

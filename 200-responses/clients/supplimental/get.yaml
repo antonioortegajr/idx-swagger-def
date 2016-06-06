@@ -1,0 +1,300 @@
+properties:
+  address:
+    type: string
+    default:
+      "100 E Broadway"
+  streetName:
+    type: string
+    default:
+      "fake"
+  streetDirection:
+    type: string
+    default:
+      ""
+  unitNumber:
+    type: string
+    default:
+      ""
+  cityName:
+    type: string
+    default:
+      ""
+  countyName:
+    type: string
+    default:
+      "Lane"
+  state:
+    type: string 
+    default:
+      "Oregon"
+  zipcode:
+    type: string
+    default: 
+      ""
+  zip4:
+    type: string 
+    default: 
+      "0000"
+  listingPrice:
+    type: string 
+    default:
+      "$123,456,789"
+  listingID:
+    type: string
+    default:
+      "42628"
+  listingAgentID:
+    type: string
+    default:
+      ""
+  listingOfficeID:
+    type: string
+    default:
+      ""
+  remarksConcat:
+    type: string
+    default:
+      ""
+  rntLse:
+    type: string
+    default:
+      ""
+  rntLsePrice:
+    type: string
+    default:
+      "0"
+  rntLsePriceOffSeason:
+    type: string
+    default:
+      "0"
+  bedrooms:
+    type: string
+    default:
+      "0"
+  totalBaths:
+    type: string
+    default:
+      "0.00"
+  fullBaths:
+    type: string
+    default:
+      "0"
+  partialBaths:
+    type: string
+    default:
+      "0"
+  mlsPtID:
+    type: string
+    default:
+      "1"
+  parentPtID:
+    type: string
+    default: "1"
+  latitude:
+    type: string 
+    default:
+      "0.000000000000"
+  longitude:
+    type: string
+    default:
+      "0.000000000000"
+  acres:
+    type: string
+    default:
+      "0.00"
+  sqFt:
+    type: string
+    default:
+      "0"
+  displayAddress:
+    type: string
+    default: "y"
+  mlsPhotoCount:
+    type: string
+    default: "null"
+  likeParentPtID:
+    type: string
+    default: "1"
+  likeMlsPtID:
+    type: string 
+    default: "1"
+  likeIdxID:
+    type: string
+    default: "a000"
+  price:
+    type: string
+    default: "123456789"
+  detailsURL:
+    type: string
+    default: "a999/42628"
+  idxID:
+    type: string
+    default:
+      "a999"
+  idxPropType:
+    type: string
+    default: "null"
+  viewCount:
+    type: string
+    default: "5"
+  mediaData:
+    type: string
+    default:
+      ""
+  ohCount:
+    type: string
+    default:
+      "0"
+  vtCount:
+    type: string
+    default: "0"
+  featured:
+    type: string
+    default:
+      "y"
+  image:
+    type: string 
+    default: "[]"
+  fullDetailsURL:
+    type: string 
+    default:
+      "http://antonioortegajr.idxbroker.com/idx/details/listing/a999/42628/123-fake--OR"
+  status:
+    type: string
+    default: 
+      "active"
+  address:
+    type: string
+    default:
+      "123 fake"
+  streetName:
+    type: string
+    default:
+      "fake"
+  streetNumber:
+    type: string 
+    default:
+      "123"
+  streetDirection:
+    type: string
+    default:
+      ""
+  unitNumber:
+    type: string
+    default:
+      ""
+  cityName:
+    type: string
+    default:
+      ""
+  countyName:
+    type: string
+    default:
+      ""
+  state:
+    type: string
+    default:
+      ""
+  zipcode:
+    type: string
+    default:
+      ""
+  zip4:
+    type: string
+    default:
+     "0000"
+  listingPrice:
+    type: string
+    default:
+      "$0"
+  listingID:
+    type: string
+    default:
+      "40921"
+  listingAgentID:
+    type: string
+    default:
+      ""
+  listingOfficeID:
+    type: string
+    default:
+      ""
+  remarksConcat:
+    type: string
+    default:
+      ""
+  rntLse:
+    type: string
+    default:
+      ""
+  rntLsePrice:
+    type: string
+    default:
+      "0"
+  rntLsePriceOffSeason:
+    type: string
+    default:
+      "0"
+  bedrooms:
+    type: string 
+    default: "0"
+  totalBaths:
+    type: string
+    default:
+      "0.00"
+  fullBaths:
+    type: string
+    default: "0"
+  partialBaths:
+    type: string
+    default: "0"
+  mlsPtID:
+    type: string
+    default: "1"
+  parentPtID:
+    type: string
+    default:
+      "1"
+  latitude:
+    type: string
+    default:
+      "0.000000000000"
+  longitude:
+    type: string
+    default:
+      "0.000000000000"
+  acres:
+    type: string
+    default:
+      "0.00"
+  sqFt:
+    type: string
+    default:
+      "0"
+  displayAddress:
+    type: string
+    default:
+      "y"
+  mlsPhotoCount:
+    type: string
+    default: "null"
+  likeParentPtID:
+    type: string
+    default:
+      "6"
+  likeMlsPtID:
+    type: string
+    default:
+      "4"
+  likeIdxID:
+    type: string
+    default:
+      "a000"
+  price:
+    type: string
+    default:
+      "0"
+  detailsURL:
+    type: string
+    default:
+      "a999/40921"
