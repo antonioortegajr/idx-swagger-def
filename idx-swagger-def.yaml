@@ -440,7 +440,6 @@ paths:
           description: An array of listing data
           schema:
             properties:
-              a000!%M1422715:
                 type: array
                 items:
                   $ref: ./200-responses/clients/featured.yaml
@@ -482,12 +481,7 @@ paths:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/filterField"
-        - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/startDatetime"
-        - $ref: "#/parameters/dateType"
-        - $ref: "#/parameters/rf"
-        - $ref: "#/parameters/disclaimers"
       tags:
         - Clients
       responses:
@@ -2203,7 +2197,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/property/{leadID}/{propertyID}:
+  /leads/property/{leadID}:
     put:
       summary: Create a new lead property
       description: Create a new lead property.
