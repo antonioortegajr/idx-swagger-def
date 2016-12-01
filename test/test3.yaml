@@ -79,6 +79,10 @@ paths:
           required: false
           enum: ["accountCreated", "lastLoginDate"]
           type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/interval"
+        - $ref: "#/parameters/startDatetime"
+        - $ref: "#/parameters/rf"
           
       tags:
         - Clients
@@ -157,19 +161,19 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/cities/:
+  /clients/cities/{listID}:
     get:
-      summary: Client city list data
-      description: Returns the cities available in each of a client's city lists. Since a client can build any number of city lists this method requires the ID of which list you want to view. To get a list of all city lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS
+      summary: Client city list data. ID required in this tester, but not in your scripting.
+      description: Returns the cities available in each of a client's city lists. Since a client can build any number of city lists this method requires the ID of which list you want to view. To get a list of all city lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - name: listID
-          in: path
-          description: If no ID is given, a list of IDs is returned.
-          required: false
+        - in: path
+          name: listID
+          description: If no ID is given a list of IDs is returned.
+          required: true
           type: number
         - $ref: "#/parameters/rf"
       tags:
@@ -249,15 +253,21 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/counties/listID:
+  /clients/counties/{listID}:
     get:
-      summary: agent information
-      description: View agent information on a multi-user account.
+      summary: Counties information. ID required in this tester, but not in your scripting.
+      description: Returns the counties available in each of a client's county lists. Since a client can build any number of county lists this method requires the ID of which list you want to view. To get a list of all county lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - in: path
+          name: listID
+          description: If no ID is given a list of IDs is returned.
+          required: true
+          type: number
+        - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
@@ -291,7 +301,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/countieslistname:
+  /clients/counties/listname:
     get:
       summary: IDs and names for each of a client's counties lists
       description: Returns the IDs and names for each of a client's counties lists including MLS counties lists. To get the list of all counties lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS.
@@ -343,6 +353,21 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - name: dynamicURL
+          in: query
+          description: dynamic wrapper url.
+          required: true
+          type: string
+        - name: savedLinkID
+          in: query
+          description: saved link ID if setting dynamic wrapper url for a specific saved link.
+          required: false
+          type: string
+        - name: pageID
+          in: query
+          description: age ID if setting dynamic wrapper url for a specific page.
+          required: false
+          type: string
       tags:
         - Clients
       responses:
@@ -3293,6 +3318,12 @@ parameters:
     description: Items to skip from the beginning.
     required: false
     type: number
+  filterValue:
+    name: filterValue
+    in: query
+    description: The value by which to filter. Conditional on use of filterField
+    required: false
+    type: string
   rf:
     name: rf
     in: query
