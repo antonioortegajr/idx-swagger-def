@@ -19,7 +19,7 @@ paths:
   /clients/accounttype:
     get:
       summary: Your account type.
-      description: Get your IDX Broker account type. This does not return JSON.
+      description: Get your IDX Broker account type. This does not return JSON or XML.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
@@ -61,12 +61,25 @@ paths:
   /clients/agents:
     get:
       summary: Agent information
-      description: View agent information.
+      description: View agent information on a multi-user account.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["agentID", "officeID", "category", "language", "agentName"]
+          type: string
+        - name: dateType
+          in: query
+          description: There are several dates associated with an agent, this will specify what is being used to return information.
+          required: false
+          enum: ["accountCreated", "lastLoginDate"]
+          type: string
+          
       tags:
         - Clients
       responses:
@@ -105,7 +118,7 @@ paths:
   /clients/apiversion:
     get:
       summary: Default API version
-      description: Get the default API version.
+      description: Get the default API version. This does not return JSON or XML
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
@@ -153,6 +166,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - name: listID
+          in: query
+          description: If no ID is given, a list of IDs is returned.
+          required: false
+          type: number
+        - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
