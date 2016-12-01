@@ -3039,12 +3039,6 @@ parameters:
     required: false
     enum: ["2016-01-01 23:59:59"]
     type: string
-  dateType:
-    name: dateType
-    in: query
-    description: There are several dates associated with a property this will specify what is being used to return information. If no value is specified dateAdded will be used.
-    required: false
-    type: number
   limit:
     name: limit
     in: query
@@ -3064,19 +3058,6 @@ parameters:
     required: false
     type: string
     enum: ["rf[]=\\*", "rf=\\*"]
-  filterField:
-    name: filterField
-    in: query
-    description: The field to use when filtering output.
-    required: false
-    type: string
-  filterValue:
-    name: filterValue
-    in: query
-    description: The value by which to filter. Conditional on use of filterField.
-    required: false
-    enum: ["test", "test3"]
-    type: string
   idxID:
     name: idxID
     in: path
@@ -3085,12 +3066,6 @@ parameters:
     type: string
     minLength: 4
     maxLength: 4
-  countSpecifier:
-    name: countSpecifier
-    in: query
-    description: The numeric city ID county ID or zipcode for which you want to get a property count.
-    required: false
-    type: number
   clientChunk:
     name: clientChunk
     in: query
