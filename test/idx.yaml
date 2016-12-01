@@ -29,8 +29,6 @@ paths:
       responses:
         200:
           description: Your account type. Platinum or Lite
-          schema:
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -88,7 +86,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Empty return
         400:
@@ -132,7 +129,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -180,7 +176,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Valid API call with nothing to retrun
         400:
@@ -224,7 +219,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -272,7 +266,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -315,7 +308,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: dynamicURL is required.
         401:
@@ -357,7 +349,6 @@ paths:
       responses:
         204:
           description: Success
-            type: string
         400:
           description: dynamicURL is required.
         401:
@@ -418,7 +409,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Required parameter missing or invalid.
         400:
@@ -463,7 +453,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -505,7 +494,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         401:
           description: accesskey not valid or revoked.
         403:
@@ -546,7 +534,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -610,7 +597,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -658,7 +644,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -701,7 +686,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -750,7 +734,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Empty Retrurn
         400:
@@ -800,7 +783,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -950,7 +932,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -998,7 +979,6 @@ paths:
       responses:
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1047,7 +1027,6 @@ paths:
           description: if no POST data is supplied, then a list of updatable fields with format information is returned
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1095,10 +1074,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1146,7 +1123,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1189,7 +1165,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1234,7 +1209,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1277,7 +1251,6 @@ paths:
       responses:
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1375,7 +1348,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1423,7 +1395,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1467,7 +1438,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1521,7 +1491,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Empty return
         400:
@@ -1572,7 +1541,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1614,7 +1582,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1656,7 +1623,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1698,7 +1664,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1742,7 +1707,6 @@ paths:
       responses:
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1796,7 +1760,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Empty return
         400:
@@ -1841,7 +1804,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1884,7 +1846,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2058,7 +2019,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2101,7 +2061,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2145,7 +2104,6 @@ paths:
       responses:
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2199,7 +2157,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Empty return
         400:
@@ -2245,7 +2202,6 @@ paths:
       responses:
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2288,7 +2244,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2334,7 +2289,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2377,7 +2331,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2429,7 +2382,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2481,11 +2433,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2527,7 +2474,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2569,7 +2515,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2613,7 +2558,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2665,7 +2609,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2717,7 +2660,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2769,7 +2711,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2826,7 +2767,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2878,7 +2818,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2930,7 +2869,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2979,10 +2917,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3038,10 +2974,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3095,10 +3029,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3145,10 +3077,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3207,7 +3137,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3261,10 +3190,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3318,10 +3245,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3377,10 +3302,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3436,10 +3359,8 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         204:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3481,7 +3402,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3532,7 +3452,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3574,7 +3493,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3616,7 +3534,6 @@ paths:
       responses:
         200:
           description: Success
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3660,7 +3577,6 @@ paths:
         responses:
           200:
           description: Success
-            type: string
           400:
             description: Required parameter missing or invalid.
           401:
