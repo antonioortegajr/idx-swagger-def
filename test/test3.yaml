@@ -453,7 +453,7 @@ paths:
           description: Temporary error. There is a possibility that not all API methods are affected.
   /clients/http:/listallowedfields:
     get:
-      summary: llowed returnable fields for a given listingID.
+      summary: allowed returnable fields for a given listingID.
       description: Returns the allowed returnable fields for a given listingID..
       parameters:
         - $ref: "#/parameters/accesskey"
