@@ -411,6 +411,11 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/interval"
+        - $ref: "#/parameters/startDatetime"
+        - $ref: "#/parameters/limit"
+        - $ref: "#/parameters/disclaimers"
+        - $ref: "#/parameters/offset"
       tags:
         - Clients
       responses:
@@ -446,23 +451,20 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/historical:
+  /clients/http:/listallowedfields:
     get:
-      summary: historical information
-      description: Returns a basic set of information for all of the client's historical (Sold MLS Data) properties when available. This is not yet avaiable.
+      summary: llowed returnable fields for a given listingID.
+      description: Returns the allowed returnable fields for a given listingID..
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/startDatetime"
       tags:
         - Clients
       responses:
         200:
           description: Success
-        400:
-          description: Required parameter missing or invalid.
         401:
           description: accesskey not valid or revoked.
         403:
@@ -3358,3 +3360,9 @@ parameters:
     required: true
     type: string
     minLength: 4
+  disclaimers:
+    name: disclaimers
+    in: query
+    description: Include MLS disclaimer/courtesy in the response..
+    required: false
+    type: boolean
