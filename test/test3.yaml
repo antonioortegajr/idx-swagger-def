@@ -1609,7 +1609,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/note/leadID/noteID:
+  /leads/note/{leadID}/{noteID}:
     delete:
       summary: Remove a lead note
       description: Remove a lead note.
@@ -1618,6 +1618,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: noteID
+          in: path
+          required: true
+          description: The numeric id of a client note ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -1659,6 +1665,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: noteID
+          in: path
+          required: true
+          description: The numeric id of a client note ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -1702,6 +1714,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: noteID
+          in: path
+          required: true
+          description: The numeric id of a client note ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -1735,7 +1753,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/note{leadID}:
+  /leads/note/{leadID}:
     put:
       summary: Create a new lead note
       description: Create a new lead note.
@@ -1778,7 +1796,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/property/leadID/propertyID:
+  /leads/property/{leadID}/{propertyID}:
     delete:
       summary: Remove a lead saved property
       description: Remove a lead saved property.
@@ -1787,6 +1805,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: propertyID
+          in: path
+          required: true
+          description: The numeric id of a client saved property ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -1828,6 +1852,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: propertyID
+          in: path
+          required: true
+          description: The numeric id of a client saved property ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -1871,6 +1901,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: propertyID
+          in: path
+          required: true
+          description: The numeric id of a client saved property ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -1947,7 +1983,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/searchleadID/searchID:
+  /leads/search/{leadID}/{searchID}:
     delete:
       summary: Remove a lead property
       description: Remove a lead property.
@@ -1956,6 +1992,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: searchID
+          in: path
+          required: true
+          description: The numeric id of a client saved search ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -1992,7 +2034,17 @@ paths:
     get:
       summary: Get searches for a lead
       description: Get searches for a lead.
-
+      parameters:
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
+        - $ref: "#/parameters/version"
+        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: searchID
+          in: path
+          required: true
+          description: The numeric id of a client saved search ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -2036,6 +2088,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/leadID"
+        - name: searchID
+          in: path
+          required: true
+          description: The numeric id of a client saved search ID.
+          type: number
       tags:
         - Leads
       responses:
