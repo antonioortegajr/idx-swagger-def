@@ -3,7 +3,7 @@ swagger: '2.0'
 info:
   title:  IDX Broker API
   description: Only GET calls available for live testing. Visit http://developers.idxbroker.com/idx-broker-api/ for more on this API. Structure descriptions along with sample code available.
-  version: "1.2.3"
+  version: "1.4.0"
 # the domain of the service
 host: api.idxbroker.com
 # array of all schemes that your API supports
@@ -19,9 +19,10 @@ paths:
   /clients/accounttype:
     get:
       summary: Your account type.
-      description: Get your IDX Broker account type. Note this does not return JSON.
+      description: Get your IDX Broker account type. This does not return JSON or XML.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
@@ -29,8 +30,6 @@ paths:
       responses:
         200:
           description: Your account type. Platinum or Lite
-          schema:
-            type: string
         400:
           description: Required parameter missing or invalid.
         401:
@@ -62,39 +61,34 @@ paths:
   /clients/agents:
     get:
       summary: Agent information
-      description: View agent information..
+      description: View agent information on a multi-user account.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: The field to use when filtering output. Available values include - agentID The IDX assigned agent ID - officeID The IDX assigned office ID - category The agent category - language The defined language settings - agentName The agent name
+          description: Field to use when filtering output.
           required: false
+          enum: ["agentID", "officeID", "category", "language", "agentName"]
           type: string
-          enum: ["agentID", "officeID","category","language","agentName"]
+        - name: dateType
+          in: query
+          description: There are several dates associated with an agent, this will specify what is being used to return information.
+          required: false
+          enum: ["accountCreated", "lastLoginDate"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: There are several dates associated with an agent this will specify what is being used to return information. If no value is specified dateAdded will be used.
-          required: false
-          type: string
-          enum: ["accountCreated","lastLoginDate"]
         - $ref: "#/parameters/rf"
+          
       tags:
         - Clients
       responses:
         200:
-          description: An array of agent data
-          schema:
-            type: object
-            properties:
-              agent:
-                type: array
-                items:
-                  $ref: ./200-responses/clients/agents.yaml
+          description: Success
         204:
           description: Empty return
         400:
@@ -128,19 +122,17 @@ paths:
   /clients/apiversion:
     get:
       summary: Default API version
-      description: Get the default API version.
+      description: Get the default API version. This does not return JSON or XML
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Clients
       responses:
         200:
-          description: default API version
-          schema:
-            type: object
-            $ref: ./200-responses/clients/apiversion.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -171,26 +163,24 @@ paths:
           description: Temporary error. There is a possibility that not all API methods are affected.
   /clients/cities/{listID}:
     get:
-      summary: Client city list data
-      description: Returns the cities available in each of a client's city lists. Since a client can build any number of city lists this method requires the ID of which list you want to view. To get a list of all city lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS
+      summary: Client city list data. ID required in this tester, but not in your scripting.
+      description: Returns the cities available in each of a client's city lists. Since a client can build any number of city lists this method requires the ID of which list you want to view. To get a list of all city lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - name: listID
-          in: path
-          required: false
-          description: The numeric id of a client city list. If an ID is given a list of IDs is returned.
-          type: string
+        - in: path
+          name: listID
+          description: If no ID is given a list of IDs is returned.
+          required: true
+          type: number
         - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
         200:
-          description: OK. All cities in a given list or if no list ID is provided, a list of list IDs. Returned city list shown below.
-          schema:
-            type: object
-            $ref: ./200-responses/clients/cities.yaml
+          description: Success
         204:
           description: Valid API call with nothing to retrun
         400:
@@ -227,16 +217,14 @@ paths:
       description: Returns the IDs and names for each of a client's city lists including MLS city lists. To get the list of all city lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS Note that this method was previously camelcased as "citiesListName" but was made lower case to fit the API naming convention. Calls to "citiesListName" will be forwarded to "citieslistname" and "citiesListName" is listed as deprecated in the method list.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Clients
       responses:
         200:
-          description: OK. A list of city list IDs and names
-          schema:
-            type: object
-            $ref: ./200-responses/clients/citieslistname.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -267,27 +255,24 @@ paths:
           description: Temporary error. There is a possibility that not all API methods are affected.
   /clients/counties/{listID}:
     get:
-      summary: agent information
-      description: View agent information on a multi-user account.
+      summary: Counties information. ID required in this tester, but not in your scripting.
+      description: Returns the counties available in each of a client's county lists. Since a client can build any number of county lists this method requires the ID of which list you want to view. To get a list of all county lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - name: listID
-          in: path
-          required: false
-          description: The numaric id of a client county list. If an ID is not given a list of IDs is returned.
+        - in: path
+          name: listID
+          description: If no ID is given a list of IDs is returned.
+          required: true
           type: number
         - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
         200:
-          description: An array of county list data
-          schema:
-            type: array
-            items:
-              $ref: ./200-responses/clients/counties.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -316,12 +301,13 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/countieslistname:
+  /clients/counties/listname:
     get:
       summary: IDs and names for each of a client's counties lists
       description: Returns the IDs and names for each of a client's counties lists including MLS counties lists. To get the list of all counties lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
 
@@ -329,10 +315,7 @@ paths:
         - Clients
       responses:
         200:
-          description: An array of counties lists data
-          schema:
-            type: array
-            $ref: ./200-responses/clients/countieslistname.yaml
+          description: Success
         400:
           description: dynamicURL is required.
         401:
@@ -367,17 +350,29 @@ paths:
       description: Update dynamic wrapper url for global, pages and saved links. If savedLinkID, or pageID are not passed, the global dynamic wrapper url will be updated.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - name: dynamicURL
+          in: query
+          description: dynamic wrapper url.
+          required: true
+          type: string
+        - name: savedLinkID
+          in: query
+          description: saved link ID if setting dynamic wrapper url for a specific saved link.
+          required: false
+          type: string
+        - name: pageID
+          in: query
+          description: age ID if setting dynamic wrapper url for a specific page.
+          required: false
+          type: string
       tags:
         - Clients
       responses:
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: dynamicURL is required.
         401:
@@ -402,10 +397,6 @@ paths:
           description: There are more saved links in the account than allowed through the API.
         500:
           description: Invalid savedLinkID or pageID will result in 500. error
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
         503:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
@@ -417,32 +408,19 @@ paths:
         Listing data. Only listings belonging to the agent(s) on an IDX Broker Account is available.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: dateAdded is the date/time at which the IDX system first added the listing to our system. dateModified is the date time the IDX system last saw a change in data as listed in the MLS
-          required: false
-          type: string
-          enum: ["dateAdded","dateModified"]
         - $ref: "#/parameters/limit"
-        - $ref: "#/parameters/offset"
-        - $ref: "#/parameters/rf"
         - $ref: "#/parameters/disclaimers"
-
+        - $ref: "#/parameters/offset"
       tags:
         - Clients
       responses:
         200:
-          description: An array of listing data
-          schema:
-            properties:
-                type: array
-                items:
-                  $ref: ./200-responses/clients/featured.yaml
+          description: Success
         204:
           description: Required parameter missing or invalid.
         400:
@@ -473,26 +451,20 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/historical:
+  /clients/http:/listallowedfields:
     get:
-      summary: historical information
-      description: Returns a basic set of information for all of the client's historical (Sold MLS Data) properties when available. This is not yet avaiable.
+      summary: allowed returnable fields for a given listingID.
+      description: Returns the allowed returnable fields for a given listingID..
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/startDatetime"
       tags:
         - Clients
       responses:
         200:
-          description: An array of historical data
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
-        400:
-          description: Required parameter missing or invalid.
+          description: Success
         401:
           description: accesskey not valid or revoked.
         403:
@@ -525,18 +497,14 @@ paths:
       description: View componant information.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Clients
       responses:
         200:
-          description: An array of componant data
-          schema:
-            type: array
-            $ref: ./200-responses/clients/listcomponents.yaml
-        400:
-          description: Required parameter missing or invalid.
+          description: Success
         401:
           description: accesskey not valid or revoked.
         403:
@@ -569,6 +537,7 @@ paths:
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
 
@@ -576,10 +545,7 @@ paths:
         - Clients
       responses:
         200:
-          description: An array of methods data
-          schema:
-            type: array
-            $ref: "#/definitions/listmethods"
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -614,38 +580,14 @@ paths:
       description: IDX data for an office.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - filterField:
-          name: filterField
-          in: query
-          description: officeID is the IDX assigned office ID. stateprovince is The state or province that the office(s) are in. zipcode is the zip code that the office(s) are in
-          required: false
-          type: string
-          enum: ["officeID","stateprovince", "zipcode"]
-        - filterValue:
-          name: filterValue
-          in: query
-          description: values
-          required: false
-          type: string
-        - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: accountCreated is the date/time the office was added to our system. lastUpdate is the date/time the office information was updated.
-          required: false
-          type: string
-          enum: ["accountCreated","lastUpdate"]
-        - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
         200:
-          description: An array of offices data
-          schema:
-            type: object
-            $ref: ./200-responses/clients/offices.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -674,28 +616,20 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/postalcodes/{listID}:
+  /clients/postalcodes/listID:
     get:
       summary: client's postalcode lists
       description: Returns the postalcodes available in each of a client's postalcode lists. Since a client can build any number of postalcode lists this method requires the ID of which list you want to view. To get a list of all postalcode lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS. Note that this method was previously called as "zipcodes" but was changed to keep API format more international. Calls to "zipcodes" will be forwarded to "postalcodes" and "zipcodes" is listed as deprecated in the method list.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - name: listID
-          in: path
-          required: false
-          description: The numaric id of a client postalcode list. If an ID is not given a list of IDs is returned.
-          type: number
-        - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
         200:
-          description: An array of agent data
-          schema:
-            type: array
-            $ref: ./200-responses/clients/postalcodes.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -730,6 +664,7 @@ paths:
       description: Returns the IDs and names for each of a client's postalcode lists including MLS postalcode lists. To get the list of all postal code lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
 
@@ -737,10 +672,7 @@ paths:
         - Clients
       responses:
         200:
-          description: An array of postalcode data
-          schema:
-            type: array
-            $ref: ./200-responses/clients/postalcodeslistname.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -775,23 +707,12 @@ paths:
       description: Get saved links for a given client account.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: created is the date/time the saved link was added to our system
-          required: false
-          type: string
-          enum: ["created"]
-        - $ref: "#/parameters/rf"
       responses:
         200:
-          description: An array of saved links data
-          schema:
-            type: object
-            $ref: ./200-responses/clients/savedlinks/get.yaml
+          description: Success
         204:
           description: Empty Retrurn
         400:
@@ -827,23 +748,11 @@ paths:
     put:
       summary: Create a new client saved link
       description: Create a new client saved link.
-      parameters:
-        - $ref: "#/parameters/accesskey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
-        - name: query string
-          in: path
-          required: true
-          description: search fields in a URL encoded ampersand delineated query string format.
-          type: string
       tags:
         - Clients
       responses:
         200:
-          description: If a client saved link is successfully created the new saved link ID will be returned. If no PUT data is supplied then a list of updatable fields with format information is returned.
-          schema:
-            type: object
-            $ref: ./200-responses/clients/savedlinks/put.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -878,6 +787,7 @@ paths:
       description: Update an existing client's saved link. This method is to be used at your own risk. We will NOT be held accountable for programmatic errors in your code or the improper use of search values or options within said values resulting in broken saved links.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - name: savedLinksID
@@ -893,10 +803,6 @@ paths:
           description: if no POST data is supplied, then a list of updatable fields with format information is returned
         204:
           description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
         400:
           description: Required parameter missing or invalid.
         401:
@@ -975,31 +881,14 @@ paths:
       description: Returns a basic set of information for all of the client's sold and pending properties. That is, those that have been removed from their MLS data.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/interval"
-        - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: dateAdded is the date/time at which the IDX system first added the listing to our system. dateModified is the date time the IDX system last saw a change in data as listed in the MLS
-          required: false
-          type: string
-          enum: ["dateAdded","dateModified"]
-        - $ref: "#/parameters/rf"
-        - $ref: "#/parameters/disclaimers"
       tags:
         - Clients
       responses:
         200:
-          description: An array of sold and pending properties data
-          schema:
-            type: object
-            properties:
-              a000!%21423409:
-                type: array
-                items:
-                  $ref: ./200-responses/clients/soldpending.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1034,6 +923,7 @@ paths:
       description: Remove a supplemental listing from the account.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - name: listingID
@@ -1046,11 +936,7 @@ paths:
         - Clients
       responses:
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1098,11 +984,7 @@ paths:
         200:
           description: if no POST data is supplied, then a list of updatable fields with format information is returned
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1137,31 +1019,16 @@ paths:
       description: Get supplemental properties information for a given client account.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/startDatetime"
-          description: dateAdded is the date/time at which the IDX system first added the listing to our system. dateModified is the date time the IDX system last saw a change in data as listed in the MLS
-          required: false
-          type: string
-          enum: ["dateAdded","dateModified"]
-        - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
         200:
-          description: An array of supplemental listing data
-          schema:
-            properties:
-              a999!%42628:
-                type: array
-                items:
-                  $ref: ./200-responses/clients/supplimental/get.yaml
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1193,26 +1060,11 @@ paths:
     put:
       summary: Create a new supplemental listing
       description: Create a new supplemental listing.
-      parameters:
-        - $ref: "#/parameters/accesskey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
-        - name: query string
-          in: path
-          required: true
-          description: supplemental listingfields in a URL encoded, ampersand delineated query string format.
-          type: string
-
-
       tags:
         - Clients
       responses:
         200:
-          description: OK If a supplemental listing is successfully created, the new supplemental listing ID will be returned. If no PUT data is supplied, then a list of updatable fields with format information is returned.
-
-          schema:
-            type: object
-            $ref: ./200-responses/clients/savedlinks/put.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1247,6 +1099,7 @@ paths:
       description: Gathers all the pages system pages (search, featured, contact, etc) that can be directly linked to without additional property information being included in the URL.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/rf"
@@ -1254,10 +1107,7 @@ paths:
         - Clients
       responses:
         200:
-          description: The name, unique ID, and URL for all system links on the account. Additionally there is a boolean named systemresults. If true this is a property results page that requires additional parameters. This means the url can be useful when dynamically building results page links but should not be linked to directly.When a client has more than one MLS on their account, listings for search pages that can vary by MLS ID will include a subpages array element.
-          schema:
-            type: array
-            $ref: ./200-responses/clients/systemlinks.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1290,10 +1140,9 @@ paths:
     get:
       summary: URLs for javascript widgets
       description: Gather all the URLs for javascript widgets on the user account. These widgets can then be placed on the user's main site via the included URLs.
-
-
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/rf"
@@ -1301,10 +1150,7 @@ paths:
         - Clients
       responses:
         200:
-          description: The name unique ID and URL for all javascript widgets that have been created on the user's account.
-          schema:
-            type: array
-            $ref: ./200-responses/clients/widgetsrc.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1339,6 +1185,7 @@ paths:
       description: clear wrapper cache.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
 
@@ -1346,11 +1193,7 @@ paths:
         - Clients
       responses:
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1385,14 +1228,15 @@ paths:
       description: Returns the zipcodes available in each of a client's zipcode lists. Since a client can build any number of zipcode lists this method requires the ID of which list you want to view. To get a list of all zipcode lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - name: listID
           in: path
-          required: false
-          description: The numaric id of a client zipcodes list. If an ID is not given a list of IDs is returned.
-          type: string
-
+          required: true
+          description: The numeric id of a client zipcode listID.
+          type: number
+        - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
@@ -1436,22 +1280,14 @@ paths:
       description: Update an existing client's saved link. This method is to be used at your own risk. We will NOT be held accountable for programmatic errors in your code or the improper use of search values or options within said values resulting in broken saved links.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - name: query string
-          in: path
-          required: true
-          description: search fields in a URL encoded, ampersand delineated query string format.
-          type: stringbulkl
       tags:
         - Leads
       responses:
         200:
-          description: If a client saved link is successfully created, the new saved link's ID will be returned. If no PUT data is supplied, then a list of updatable fields with format information is returned.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1485,24 +1321,14 @@ paths:
       description: Update an existing client's saved link. This method is to be used at your own risk. We will NOT be held accountable for programmatic errors in your code or the improper use of search values or options within said values resulting in broken saved links.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - name: query string
-          in: path
-          required: true
-          description: search fields in a URL encoded, ampersand delineated query string format.
-          type: string
-
-
       tags:
         - Leads
       responses:
         200:
-          description: If a client saved link is successfully created, the new saved link's ID will be returned. If no PUT data is supplied, then a list of updatable fields with format information is returned.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1531,25 +1357,20 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/{leadID}:
+  /leads/leadID:
     delete:
       summary: Remove a lead system wide
       description: This method is to be used at your own risk. We will NOT be held accountable for programmatic errors in your code or the improper use of search values or options within said values resulting in deletion of leads.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/leadID"
-
       tags:
         - Leads
       responses:
-        204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+        200:
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1583,29 +1404,14 @@ paths:
       description: Get information for one or multiple leads.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/interval"
-        - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: subscribeDate is set at the time the lead signed up or was added to the system via API or middleware. lastEdited is set any time lead information is edited. lastLoginDate is the last time the lead logged in to their account. lastPropertyUpdateDate is the last time the lead received property updates. lastActivityDate is the last time the lead was active. This could be a login a saved property or a saved search.
-          required: false
-          type: string
-          enum: ["subscribeDate","lastEdited","lastLoginDate","lastPropertyUpdateDate","lastActivityDate"]
-        - $ref: "#/parameters/limit"
-        - $ref: "#/parameters/offset"
-        - $ref: "#/parameters/rf"
       tags:
         - Leads
       responses:
         200:
-          description: OK "If a lead ID is provided detailed information about that lead is returned. Otherwise simple information about all leads is returned."
-          schema:
-            type: array
-            $ref: ./200-responses/leads/lead/get.yaml
+          description: Success
         204:
           description: Empty return
         400:
@@ -1641,25 +1447,14 @@ paths:
       description: Update the information for one lead specified by the primary request ID.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/interval"
-        - $ref: "#/parameters/startDatetime"
-        - $ref: "#/parameters/dateType"
-        - $ref: "#/parameters/limit"
-        - $ref: "#/parameters/offset"
-        - $ref: "#/parameters/rf"
-
       tags:
         - Leads
       responses:
-        204:
-          description: OK "If no POST data is supplied then a list of updatable fields with format information is returned."
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+        200:
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1694,17 +1489,14 @@ paths:
       description: Currently the API cannot differentiate between a lead rejected due to server error or one rejected due to bad email address. The lead system requires email addresses that are correctly formatted to cut down on garbage accounts, and they need to have a valid MX record. Most 500 error from this method are a result of bad email addresses. In future versions we will differentiate the error and make the MX record requirement optional.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Leads
       responses:
         200:
-          description: OK "If no PUT data is supplied then a list of updatable fields with format information is returned."
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1739,17 +1531,14 @@ paths:
       description: This is a simple, access anywhere, method for getting a list of all API components available.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Leads
       responses:
         200:
-          description: All available APIs/Components.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/listcomponents'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1784,17 +1573,14 @@ paths:
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Leads
       responses:
         200:
-          description: Basic information about all available methods in this API.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/listmethods'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1829,19 +1615,20 @@ paths:
       description: Remove a lead note.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/noteID"
+        - name: noteID
+          in: path
+          required: true
+          description: The numeric id of a client note ID.
+          type: number
       tags:
         - Leads
       responses:
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1875,29 +1662,20 @@ paths:
       description: Get notes for a lead.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/noteID"
-        - $ref: "#/parameters/interval"
-        - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: created is the date/time the lead note is added to our system. lastAltered is the date/tome the lead note is updated in our system
-          required: false
-          type: string
-          enum: ["created","lastAltered"]
-        - $ref: "#/parameters/rf"
-
+        - name: noteID
+          in: path
+          required: true
+          description: The numeric id of a client note ID.
+          type: number
       tags:
         - Leads
       responses:
         200:
-          description: Lead note information. If no note ID is sent all notes for the lead are returned. If a note ID is passed only the one note is returned."
-          schema:
-            type: array
-            $ref: ./200-responses/leads/note/get.yaml
+          description: Success
         204:
           description: Empty return
         400:
@@ -1933,19 +1711,20 @@ paths:
       description: Update the notes information for one lead specified by the primary request ID.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/noteID"
+        - name: noteID
+          in: path
+          required: true
+          description: The numeric id of a client note ID.
+          type: number
       tags:
         - Leads
       responses:
         200:
-          description: If a note is successfully created the new notes's ID will be returned. If no PUT data is supplied then a list of updatable fields with format information is returned."
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -1974,12 +1753,13 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/note{leadID}:
+  /leads/note/{leadID}:
     put:
       summary: Create a new lead note
       description: Create a new lead note.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
@@ -1987,11 +1767,7 @@ paths:
         - Leads
       responses:
         200:
-          description: If a note is successfully created the new notes's ID will be returned. If no PUT data is supplied then a list of updatable fields with format information is returned.
-          schema:
-            schema:
-            type: array
-            $ref: ./200-responses/leads/note/put.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2026,31 +1802,20 @@ paths:
       description: Remove a lead saved property.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - leadID:
-            name: leadID
-            in: path
-            description: The idx id of lead.
-            required: true
-            type: string
-            minLength: 1
-        - propertyID:
-            name: propertyID
-            in: path
-            description: The idx id of lead property.
-            required: true
-            type: string
-            minLength: 1
+        - $ref: "#/parameters/leadID"
+        - name: propertyID
+          in: path
+          required: true
+          description: The numeric id of a client saved property ID.
+          type: number
       tags:
         - Leads
       responses:
         204:
           description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2084,32 +1849,15 @@ paths:
       description: Get saved properties for a lead.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - $ref: "#/parameters/interval"
-        - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: created is the date/time the lead note is added to our system. lastEdited is the date/tome the lead's saved search is updated in our system.
-          required: false
-          type: string
-          enum: ["created","lastEdited"]
-        - $ref: "#/parameters/rf"
-        - leadID:
-            name: leadID
-            in: path
-            description: The idx id of lead.
-            required: true
-            type: string
-            minLength: 1
-        - propertyID:
-            name: propertyID
-            in: path
-            description: The idx id of lead property.
-            required: true
-            type: string
-            minLength: 1
+        - $ref: "#/parameters/leadID"
+        - name: propertyID
+          in: path
+          required: true
+          description: The numeric id of a client saved property ID.
+          type: number
       tags:
         - Leads
       responses:
@@ -2150,25 +1898,20 @@ paths:
       description: Update an existing lead's saved property.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
-        - propertyID:
-            name: propertyID
-            in: path
-            description: The idx id of lead property.
-            required: true
-            type: string
-            minLength: 1
+        - name: propertyID
+          in: path
+          required: true
+          description: The numeric id of a client saved property ID.
+          type: number
       tags:
         - Leads
       responses:
         200:
-          description: If no POST data is supplied then a list of updatable fields with format information is returned.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2203,6 +1946,7 @@ paths:
       description: Create a new lead property.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
@@ -2210,11 +1954,7 @@ paths:
         - Leads
       responses:
         200:
-          description: If a saved property is successfully created the new property's ID will be returned. If no PUT data is supplied then a list of updatable fields with format information is returned.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2243,25 +1983,26 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/search{leadID}/{searchID}:
+  /leads/search/{leadID}/{searchID}:
     delete:
       summary: Remove a lead property
       description: Remove a lead property.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/searchID"
+        - name: searchID
+          in: path
+          required: true
+          description: The numeric id of a client saved search ID.
+          type: number
       tags:
         - Leads
       responses:
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2295,33 +2036,20 @@ paths:
       description: Get searches for a lead.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/searchID"
-        - $ref: "#/parameters/interval"
-        - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
-          in: query
-          description: created is the date/time the lead note is added to our system. lastEdited is the date/tome the lead's saved search is updated in our system.
-          required: false
-          type: string
-          enum: ["created","lastEdited"]
-        - $ref: "#/parameters/rf"
-
+        - name: searchID
+          in: path
+          required: true
+          description: The numeric id of a client saved search ID.
+          type: number
       tags:
         - Leads
       responses:
         200:
-          description: an array with 2 keys. The key searchInformation that contains all existing saved search information. The key info will return messages about any returned saved search. Currently this info will tell you if any search's advanced fields are not valid in the IDX system.
-          schema:
-            type: object
-            properties:
-              searchInformation:
-                type: array
-                items:
-                  $ref: ./200-responses/leads/search/get.yaml
+          description: Success
         204:
           description: Empty return
         400:
@@ -2357,20 +2085,20 @@ paths:
       description: Update an existing lead's saved search.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
-        - $ref: "#/parameters/searchID"
-
+        - name: searchID
+          in: path
+          required: true
+          description: The numeric id of a client saved search ID.
+          type: number
       tags:
         - Leads
       responses:
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2405,6 +2133,7 @@ paths:
       description: Create a new lead note.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/leadID"
@@ -2412,10 +2141,7 @@ paths:
         - Leads
       responses:
         200:
-          description: If a note is successfully created the new notes's ID will be returned. If no PUT data is supplied then a list of updatable fields with format information is returned.
-          schema:
-            type: array
-            $ref: ./200-responses/leads/search/put.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2452,6 +2178,7 @@ paths:
       description: Gives the date and time a particular MLS was last downloaded, processed and the last time images gathering was completed. Dates/times given are UTC
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
@@ -2460,10 +2187,7 @@ paths:
         - MLS
       responses:
         200:
-          description: Profile information for a user
-          schema:
-            type: array
-            $ref: ./200-responses/mls/age.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2498,6 +2222,7 @@ paths:
       description: This method provides all of the IDX IDs and names for all of the paperwork approved MLSs on the client's account. Note this method was previously camelcased as "approvedMLS" but was made lower case to fit the API naming convention. Calls to "approvedMLS" will be forwarded to "approvedmls" and "approvedMLS" is listed as deprecated in the method list.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/rf"
@@ -2505,10 +2230,7 @@ paths:
         - MLS
       responses:
         200:
-          description: Profile information for a user
-          schema:
-            type: array
-            $ref: ./200-responses/mls/approvedmls.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2543,26 +2265,23 @@ paths:
       description: All cities represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values cityID is the IDX assigned cityID value. cityName is the name of a city stateAbrv is the 2 letter state abbreviation mlsPtID is the IDX assigned ID of the MLS property type (see the propertytypes method).
+          description: Field to use when filtering output.
           required: false
+          enum: ["cityID", "cityName", "mlsPtID"]
           type: string
-          enum: ["cityID","cityName","mlsPtID"]
         - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
         200:
-          description: An array of cities in an MLS.
-          schema:
-            type: array
-            $ref: ./200-responses/mls/cities.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2597,30 +2316,23 @@ paths:
       description: All counties represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values countyID is the IDX assigned countyID value. countyName is the name of a city stateAbrv is the 2 letter state abbreviation mlsPtID is the IDX assigned ID of the MLS property type (see the propertytypes method).
+          description: Field to use when filtering output.
           required: false
+          enum: ["countyID", "countyName", "mlsPtID"]
           type: string
-          enum: ["countyID","countyName","mlsPtID"]
         - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
         200:
-          description: An array of counties in an MLS.
-          schema:
-            type: array
-            $ref: ./200-responses/mls/counties.yaml
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2655,15 +2367,14 @@ paths:
       description: This is a simple, access anywhere, method for getting a list of all API components available.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - MLS
       responses:
         200:
-          description: This is a simple, access anywhere, method for getting a list of all API components available.
-          schema:
-            $ref: '#/definitions/listcomponents'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2698,15 +2409,14 @@ paths:
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - MLS
       responses:
         200:
-          description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
-          schema:
-            $ref: '#/definitions/listmethods'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2741,6 +2451,7 @@ paths:
       description: The sum total of properties listed in a given MLS as well as sums for each property type in the MLS.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
@@ -2749,10 +2460,7 @@ paths:
         - MLS
       responses:
         200:
-          description: The sum total of properties listed in a given MLS as well as sums for each property type in the MLS.
-          schema:
-            type: array
-            $ref: ./200-responses/mls/prices.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2787,26 +2495,26 @@ paths:
       description: Gives a total number of listings available for a given city, county, or zipcode.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
         - name: countType
-          in: path
-          description: The numeric city ID, county ID, or zipcode for which you want to get a property count.
-          required: true
+          in: query
+          description: Specify if you are looking for the count of a city, county, or zipcode.
+          required: false
+          enum: ["city", "county", "zipcode"]
           type: string
-
-        - $ref: "#/parameters/countSpecifier"
-
-        - $ref: "#/parameters/rf"
+        - name: countSpecifier
+          in: query
+          description: The numeric city ID, county ID, or zipcode for which you want to get a property count.
+          required: false
+          type: number
       tags:
         - MLS
       responses:
         200:
-          description: Gives a total number of listings available for a given city, county, or zipcode.
-          schema:
-            type: string
-            $ref: ./200-responses/mls/propertycount.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2841,26 +2549,23 @@ paths:
       description: Gives the property type information for all types that are available on a given MLS.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values "mlsPtID - the IDX assigned numeric ID of the MLS property type as seen in a typical results page URL.", "mlsPropertyType - the name of the property type as given by the MLS."
+          description: Field to use when filtering output.
           required: false
+          enum: ["mlsPtID", "mlsPropertyType"]
           type: string
-          enum: ["mlsPtID","mlsPropertyType"]
         - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
         200:
-          description: Gives the property type information for all types that are available on a given MLS.
-          schema:
-            type: string
-            $ref: ./200-responses/mls/propertytypes.yaml
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2895,30 +2600,23 @@ paths:
       description: All the fields in a given MLS that are currently allowed to be searched according to MLS guidelines.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values "mlsPtID - the IDX assigned ID of the MLS property type(s). See the propertytypes method in this API/Component for a lookup of property type IDs.", "parentPtID - the IDX assigned parent property type ID; use any time multiple MLSs are being searched at once."
+          description: Field to use when filtering output.
           required: false
+          enum: ["mlsPtID", "parentPtID"]
           type: string
-          enum: ["mlsPtID","parentPtID"]
         - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
         200:
-          description: Profile information for a user
-          schema:
-            type: string
-            $ref: ./200-responses/mls/searchfields.yaml
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2953,35 +2651,32 @@ paths:
       description: Field values in a given MLS that are currently allowed to be searched according to MLS guidelines.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["mlsPtID", "parentPtID"]
+          type: string
         - name: mlsPtID
-          in: path
-          description: The property type ID in an MLS
-          required: true
+          in: query
+          description: The IDX assigned ID of the MLS property type(s). See the propertytypes method in this API/Component for a lookup of property type IDs.
+          required: false
           type: number
-          minLength: 1
-          maxLength: 1
         - name: name
-          in: path
+          in: query
           description: mls field name - the IDX assigned name of the MLS field name. See the searchfields for the list of searchable fields.
-          required: true
-          type: number
-
-
+          required: false
+          type: string
+        
       tags:
         - MLS
       responses:
         200:
-          description: Search field values.
-          schema:
-            type: array
-            $ref: ./200-responses/mls/searchfieldvalues.yaml
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3010,37 +2705,29 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/zipcodes/{idxID]:
+  /mls/zipcodes/{idxID}:
     get:
       summary: All zip codes represented in the current set of MLS data
       description: All zip codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values id is a 5 digit zip code.. stateAbrv is the 2 letter state abbreviation. mlsPtID is the IDX assigned ID of the MLS property type (see the propertytypes method).
+          description: Field to use when filtering output.
           required: false
+          enum: ["zipcode", "stateAbrv", "mlsPtID"]
           type: string
-          enum: ["id","stateAbrv","mlsPtID"]
         - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
         200:
-          description: An array of zip codes in an MLS.
-          schema:
-            schema:
-            type: array
-            $ref: ./200-responses/mls/cities.yaml
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3069,37 +2756,29 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/postalcodes/{idxID]:
+  /mls/postalcodes/{idxID}:
     get:
       summary: All postal codes represented in the current set of MLS data
       description: All postal codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
         - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/idxID"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values id is a 5 digit postal code.. stateAbrv is the 2 letter state abbreviation. mlsPtID is the IDX assigned ID of the MLS property type (see the propertytypes method).
+          description: Field to use when filtering output.
           required: false
+          enum: ["id", "stateAbrv", "mlsPtID"]
           type: string
-          enum: ["id","stateAbrv","mlsPtID"]
         - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
         200:
-          description: An array of zip codes in an MLS.
-          schema:
-            schema:
-            type: array
-            $ref: ./200-responses/mls/cities.yaml
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3135,7 +2814,7 @@ paths:
       summary: Get a list of all agents for your clients.
       description: Get a list of all agents for your clients.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/clientChunk"
@@ -3147,20 +2826,9 @@ paths:
         - Partners
       responses:
         200:
-          description: Get a list of all agents for your clients.
-          schema:
-            type: object
-            properties:
-              agent:
-                type: array
-                items:
-                  $ref: ./200-responses/partners/aggregatedagents.yaml
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3194,41 +2862,30 @@ paths:
       summary: Get a list of featured MLS properties.
       description: Get a list of featured MLS properties. Output fields may or may not be populated depending on how the information was entered into the IDX system.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - dateType:
-          name: dateType
+        - name: dateType
           in: query
-          description: Allowed values "dateAdded - the date/time at which the IDX system first added the listing to our system.", "dateModified - the date time the IDX system last saw a change in data as listed in the MLS."
+          description: There are several dates associated with a lead, this will specify is being used to return information. If no value is specified dateAdded will be used.
           required: false
-          type: string
           enum: ["dateAdded", "dateModified"]
+          type: string
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
+        - $ref: "#/parameters/rf"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
         - $ref: "#/parameters/offset"
         - $ref: "#/parameters/limit"
-        - $ref: "#/parameters/rf"
+        - $ref: "#/parameters/disclaimers"
       tags:
         - Partners
       responses:
         200:
-          description: Get a list of featured MLS properties.
-          schema:
-            type: object
-            properties:
-              agent:
-                type: array
-                items:
-                  $ref: ./200-responses/partners/aggregatedfeatured.yaml
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3262,38 +2919,29 @@ paths:
       summary: Get a list of all leads.
       description: Get a list of featured MLS properties. For bandwidth and memory considerations there is a limit of 5,000 on the number of leads that can be returned in any single request. Even if a full week of data is requested this limit will only be encountered if your clients have a combined average 30+ leads created, updated, or active per hour (as such it will be most common when requesting leads based on last property update date). If this limit is exceeded a 413 -Requested Entity Too Large error is returned. If encountered a smaller interval will need to be used.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - dateType:
-          name: dateType
+        - name: dateType
           in: query
-          description: Allowed values "subscribeDate - set at the time the lead signed up or was added to the system via API or middleware.", "lastEdited - set any time lead information is edited.", "lastLoginDate - the last time the lead logged in to their account.", "lastPropertyUpdateDate - the last time the lead received property updates.", "lastActivityDate - the last time the lead was active. This could be a login, a saved property, or a saved search."
+          description: There are several dates associated with a lead, this will specify is being used to return information. If no value is specified subscribeDate will be used.
           required: false
+          enum: ["subscribeDate", "lastEdited", "lastLoginDate", "lastPropertyUpdateDate", "lastActivityDate"]
           type: string
-          enum: ["subscribeDate", "lastEdited","lastLoginDate","lastPropertyUpdateDate","lastActivityDate"]
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
+        - $ref: "#/parameters/rf"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
-        - $ref: "#/parameters/rf"
+        
+          
       tags:
         - Partners
       responses:
         200:
-          description: Get a list of all leads.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3327,7 +2975,7 @@ paths:
       summary: Get a list of all leads traffic history.
       description: Get a list of all leads traffic history. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/interval"
@@ -3339,19 +2987,9 @@ paths:
         - Partners
       responses:
         200:
-          description: Get a list of all leads traffic history.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3385,37 +3023,28 @@ paths:
       summary: MLS listings (not supplemental) by client account ID.
       description: This method gives the status for all MLS listings (not supplemental) broken down by client account ID. This includes sold/pending listings with an unknown status which are not usually returned by sold/pending api methods. This is helpful if you need to know when previously gathered featured properties have left the market.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values "status"
+          description: The field to use when filtering output..
           required: false
-          type: string
           enum: ["status"]
-        - filterValue:
-          name: filterValue
-          in: query
-          description: Allowed values "status"
-          required: false
           type: string
-          enum: ["active","unknown","sold","pending","contigent"]
+        - name: filterValue
+          in: query
+          description: The field to use when filtering output..
+          required: false
+          enum: ["active", "unknown", "sold", "pending", "contigent"]
+          type: string
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
-        - $ref: "#/parameters/rf"
       tags:
         - Partners
       responses:
         200:
-          description: This method gives the status for all MLS listings (not supplemental) broken down by client account ID. This includes sold/pending listings with an unknown status which are not usually returned by sold/pending api methods. This is helpful if you need to know when previously gathered featured properties have left the market.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3449,38 +3078,30 @@ paths:
       summary: All lead saved properties.
       description: Get a list of all lead saved properties. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
+        - name: dateType
           in: query
-          description: Allowed values "created - set at the time the saved property is saved.", "lastEdited - set any time lead information is edited.", "lastLoginDate - the last time the lead logged in to their account.", "lastPropertyUpdateDate - the last time the lead received property updates.", "lastActivityDate - the last time the lead was active. This could be a login, a saved property, or a saved search."
+          description: here are several dates associated with a property, this will specify what is being used to return information. If no value is specified dateAdded will be used.
           required: false
-          type: string
           enum: ["created", "lastEdited"]
+          type: string
+        - $ref: "#/parameters/rf"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
-        - $ref: "#/parameters/rf"
+        - $ref: "#/parameters/offset"
+        - $ref: "#/parameters/limit"
+        - $ref: "#/parameters/disclaimers"
       tags:
         - Partners
       responses:
         200:
-          description: Get a list of all lead saved properties. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3514,38 +3135,30 @@ paths:
       summary: All lead saved searches.
       description: Get a list of all lead saved searches. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
+        - name: dateType
           in: query
-          description: Allowed values "created - set at the time the saved property is saved.", "lastEdited - set any time lead information is edited.", "lastLoginDate - the last time the lead logged in to their account.", "lastPropertyUpdateDate - the last time the lead received property updates.", "lastActivityDate - the last time the lead was active. This could be a login, a saved property, or a saved search."
+          description: here are several dates associated with a property, this will specify what is being used to return information. If no value is specified dateAdded will be used.
           required: false
-          type: string
           enum: ["created", "lastEdited"]
+          type: string
+        - $ref: "#/parameters/rf"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
-        - $ref: "#/parameters/rf"
+        - $ref: "#/parameters/offset"
+        - $ref: "#/parameters/limit"
+        - $ref: "#/parameters/disclaimers"
       tags:
         - Partners
       responses:
         200:
-          description: Get a list of all lead saved searches. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3579,40 +3192,30 @@ paths:
       summary: Sold/pending MLS properties.
       description: Get a list of sold/pending MLS properties. Output fields may or may not be populated depending on how the information was entered into the IDX system. We are planning to add the ability to query by the date the property left the market and, for sold listings, the date it was sold in a future update.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
+        - name: dateType
           in: query
-          description: Allowed values "dateAdded - the date/time at which the IDX system first added the listing to our system.", "dateModified - the date time the IDX system last saw a change in data as listed in the MLS."
+          description: here are several dates associated with a property, this will specify what is being used to return information. If no value is specified dateAdded will be used.
           required: false
-          type: string
           enum: ["dateAdded", "dateModified"]
+          type: string
+        - $ref: "#/parameters/rf"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
         - $ref: "#/parameters/offset"
         - $ref: "#/parameters/limit"
-        - $ref: "#/parameters/rf"
+        - $ref: "#/parameters/disclaimers"
       tags:
         - Partners
       responses:
         200:
-          description: Get a list of sold/pending MLS properties. Output fields may or may not be populated depending on how the information was entered into the IDX system. We are planning to add the ability to query by the date the property left the market and, for sold listings, the date it was sold in a future update.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3646,40 +3249,31 @@ paths:
       summary: Supplemental (non-MLS) properties
       description: Get a list of supplemental (non-MLS) properties. Output fields may or may not be populated depending on how the information was entered into the IDX system.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
-        - dateType:
-          name: dateType
+        - name: dateType
           in: query
-          description: Allowed values "dateAdded - the date/time at which the IDX system first added the listing to our system.", "dateModified - the date time the IDX system last saw a change in data as listed in the MLS."
+          description: here are several dates associated with a property, this will specify what is being used to return information. If no value is specified dateAdded will be used.
           required: false
-          type: string
           enum: ["dateAdded", "dateModified"]
+          type: string
+        - $ref: "#/parameters/rf"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
         - $ref: "#/parameters/offset"
         - $ref: "#/parameters/limit"
-        - $ref: "#/parameters/rf"
+        - $ref: "#/parameters/disclaimers"
+        
       tags:
         - Partners
       responses:
         200:
-          description: Get a list of supplemental (non-MLS) properties. Output fields may or may not be populated depending on how the information was entered into the IDX system.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         204:
-          description: Empty return
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Empty'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3713,20 +3307,14 @@ paths:
       summary: Get the default api version.
       description: Get the default api version.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Partners
       responses:
         200:
-          description: Get the default api version.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3760,29 +3348,26 @@ paths:
       summary: Client List
       description: A list of clients available to a given partner. The list of clients can be filtered by GET values.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
-        - filterField:
-          name: filterField
+        - name: filterField
           in: query
-          description: Allowed values "accountStatus - filter to just enabled or just disabled accounts.", "accountID - information for a single client by their account ID."
+          description: Field to use when filtering output.
+          required: false
+          enum: ["accountStatus", "accountID"]
+          type: string
+        - name: filterValue
+          in: query
+          description: The value by which to filter. Conditional on use of filterField.
           required: false
           type: string
-          enum: ["accountStatus", "accountID"]
-        - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
       tags:
         - Partners
       responses:
         200:
-          description: History information for the given user
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3816,20 +3401,14 @@ paths:
       summary: List of all API components available
       description: This is a simple, access anywhere, method for getting a list of all API components available.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Partners
       responses:
         200:
-          description: This is a simple, access anywhere, method for getting a list of all API components available.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3863,20 +3442,14 @@ paths:
       summary: Listing all available methods
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
-        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
       tags:
         - Partners
       responses:
         200:
-          description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
-          schema:
-            $ref: '#/definitions/Error'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+          description: Success
         400:
           description: Required parameter missing or invalid.
         401:
@@ -3905,27 +3478,21 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /partners/propertytypes:
+  /partners/propertytypes/{idxID}:
       get:
         summary: Names and IDs of all available property types.
         description: Gives the names and IDs of all available property types. This method differs from the property type lookup method in the client API component in that it can look up property types for any active Platinum MLS, not just those for which the client is a member. The IDX property types are those used for multiple MLS searches and are equivalent to the property types used in the original IDX product.
         parameters:
-          - $ref: "#/parameters/accesskey"
-          - $ref: "#/parameters/version"
-          - $ref: "#/parameters/output"
-          - $ref: "#/parameters/idxID"
-          - $ref: "#/parameters/rf"
+        - $ref: "#/parameters/ancillarykey"
+        - $ref: "#/parameters/version"
+        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - $ref: "#/parameters/rf"
         tags:
           - Partners
         responses:
           200:
-            description: Gives the names and IDs of all available property types. This method differs from the property type lookup method in the client API component in that it can look up property types for any active Platinum MLS, not just those for which the client is a member. The IDX property types are those used for multiple MLS searches and are equivalent to the property types used in the original IDX product.
-            schema:
-              $ref: '#/definitions/Error'
-          default:
-            description: Unexpected error
-            schema:
-              $ref: '#/definitions/Error'
+            description: Success.
           400:
             description: Required parameter missing or invalid.
           401:
@@ -3960,8 +3527,17 @@ parameters:
   accesskey:
     name: accesskey
     in: header
-    description: REQUIRED Your API Key.
+    description: REQUIRED Your client level API Key.
     required: true
+    type: string
+    minLength: 22
+    maxLength: 22
+  ancillarykey:
+    #This key is referred to as both ancillary and Partner key.
+    name: partnerkey
+    in: header
+    description: Your Developer Partner API Key.
+    required: false
     type: string
     minLength: 22
     maxLength: 22
@@ -3992,12 +3568,6 @@ parameters:
     required: false
     enum: ["2016-01-01 23:59:59"]
     type: string
-  dateType:
-    name: dateType
-    in: query
-    description: There are several dates associated with a property this will specify what is being used to return information. If no value is specified dateAdded will be used.
-    required: false
-    type: number
   limit:
     name: limit
     in: query
@@ -4010,6 +3580,12 @@ parameters:
     description: Items to skip from the beginning.
     required: false
     type: number
+  filterValue:
+    name: filterValue
+    in: query
+    description: The value by which to filter. Conditional on use of filterField
+    required: false
+    type: string
   rf:
     name: rf
     in: query
@@ -4017,19 +3593,6 @@ parameters:
     required: false
     type: string
     enum: ["rf[]=\\*", "rf=\\*"]
-  filterField:
-    name: filterField
-    in: query
-    description: The field to use when filtering output.
-    required: false
-    type: string
-  filterValue:
-    name: filterValue
-    in: query
-    description: The value by which to filter. Conditional on use of filterField.
-    required: false
-    enum: ["test", "test3"]
-    type: string
   idxID:
     name: idxID
     in: path
@@ -4038,12 +3601,6 @@ parameters:
     type: string
     minLength: 4
     maxLength: 4
-  countSpecifier:
-    name: countSpecifier
-    in: query
-    description: The numeric city ID county ID or zipcode for which you want to get a property count.
-    required: false
-    type: number
   clientChunk:
     name: clientChunk
     in: query
@@ -4063,78 +3620,9 @@ parameters:
     required: true
     type: string
     minLength: 4
-  searchID:
-    name: searchID
-    in: path
-    description: The idx id of lead property search.
-    required: true
-    type: string
-    minLength: 1
-  noteID:
-    name: noteID
-    in: path
-    description: The idx id of lead note.
-    required: true
-    type: string
-    minLength: 1
   disclaimers:
     name: disclaimers
-    in: path
-    description: Include MLS disclaimer/courtesy in the response.
+    in: query
+    description: Include MLS disclaimer/courtesy in the response..
     required: false
     type: boolean
-
-#default definitions
-definitions:
-  listmethods:
-    type: object
-    properties:
-      GET:
-        type: string
-        default:
-          "true"
-      POST:
-        type: string
-        default:
-          "false"
-      PUT:
-        type: string
-        default:
-          "false"
-      DELETE:
-        type: string
-        default:
-          "false"
-  listcomponents:
-    type: object
-    properties:
-      component:
-        type: string
-        default:
-          "leads"
-      level:
-        type: string
-        default:
-          "clients"
-      enabled:
-        type: string
-        default:
-          "y"
-  Empty:
-    type: object
-    properties:
-      null:
-        description: the return body is empty
-        type: string
-        default: ""
-  Error:
-    type: object
-    properties:
-      code:
-        description: pretty fly
-        type: integer
-        format: int32
-      message:
-        type: string
-      fields:
-        type: string
