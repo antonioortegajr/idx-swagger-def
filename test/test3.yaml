@@ -2195,7 +2195,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/cities/idxID:
+  /mls/cities/{idxID}:
     get:
       summary: Cities in an MLS
       description: All cities represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
@@ -2204,6 +2204,15 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["cityID", "cityName", "mlsPtID"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
@@ -2237,7 +2246,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/counties/idxID:
+  /mls/counties/{idxID}:
     get:
       summary: Counties in an MLS
       description: All counties represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
@@ -2246,6 +2255,15 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["countyID", "countyName", "mlsPtID"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
@@ -2407,7 +2425,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/propertycount/idxID:
+  /mls/propertycount/{idxID}:
     get:
       summary: Total number of listings available for a given city, county, or zipcode.
       description: Gives a total number of listings available for a given city, county, or zipcode.
@@ -2416,6 +2434,18 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: countType
+          in: query
+          description: Specify if you are looking for the count of a city, county, or zipcode.
+          required: false
+          enum: ["city", "county", "zipcode"]
+          type: string
+        - name: countSpecifier
+          in: query
+          description: The numeric city ID, county ID, or zipcode for which you want to get a property count.
+          required: false
+          type: number
       tags:
         - MLS
       responses:
@@ -2449,7 +2479,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/propertytypes/idxID:
+  /mls/propertytypes/{idxID}:
     get:
       summary: Property type information for all types
       description: Gives the property type information for all types that are available on a given MLS.
@@ -2458,6 +2488,15 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["mlsPtID", "mlsPropertyType"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
@@ -2491,7 +2530,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/searchfields/idxID:
+  /mls/searchfields/{idxID}:
     get:
       summary: Seach Fields Data
       description: All the fields in a given MLS that are currently allowed to be searched according to MLS guidelines.
@@ -2500,6 +2539,15 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["mlsPtID", "parentPtID"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
@@ -2533,7 +2581,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/searchfieldvalues/idxID:
+  /mls/searchfieldvalues/{idxID}:
     get:
       summary: Seach Field Values
       description: Field values in a given MLS that are currently allowed to be searched according to MLS guidelines.
@@ -2542,6 +2590,24 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["mlsPtID", "parentPtID"]
+          type: string
+        - name: mlsPtID
+          in: query
+          description: The IDX assigned ID of the MLS property type(s). See the propertytypes method in this API/Component for a lookup of property type IDs.
+          required: false
+          type: number
+        - name: name
+          in: query
+          description: mls field name - the IDX assigned name of the MLS field name. See the searchfields for the list of searchable fields.
+          required: false
+          type: string
+        
       tags:
         - MLS
       responses:
@@ -2575,7 +2641,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/zipcodes/idxID:
+  /mls/zipcodes/{idxID}:
     get:
       summary: All zip codes represented in the current set of MLS data
       description: All zip codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
@@ -2584,6 +2650,15 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["zipcode", "stateAbrv", "mlsPtID"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
@@ -2617,7 +2692,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/postalcodes/idxID:
+  /mls/postalcodes/{idxID}:
     get:
       summary: All postal codes represented in the current set of MLS data
       description: All postal codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
@@ -2626,6 +2701,15 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["id", "stateAbrv", "mlsPtID"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/rf"
       tags:
         - MLS
       responses:
