@@ -1222,7 +1222,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/zipcodes/listID:
+  /clients/zipcodes/{listID}:
     get:
       summary: zipcodes available in each of a client's zipcode lists
       description: Returns the zipcodes available in each of a client's zipcode lists. Since a client can build any number of zipcode lists this method requires the ID of which list you want to view. To get a list of all zipcode lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS.
@@ -1231,6 +1231,12 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
         - $ref: "#/parameters/output"
+        - name: listID
+          in: path
+          required: true
+          description: The numeric id of a client zipcode listID.
+          type: number
+        - $ref: "#/parameters/rf"
       tags:
         - Clients
       responses:
