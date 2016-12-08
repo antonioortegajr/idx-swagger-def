@@ -3547,7 +3547,7 @@ parameters:
     description: Version of the API to call.
     required: false
     type: string
-    default: "1.2.3"
+    default: "1.4.0"
   output:
     name: output
     in: header
