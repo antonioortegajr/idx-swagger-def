@@ -10,11 +10,17 @@ host: api.idxsandbox.com
 schemes:
   - https
 # will be prefixed to all paths
+consumes:
+  - application/json
+  - text/xml
 produces:
-  - application/x-www-form-urlencoded
+  - application/json
+  - text/html
+schemes:
+  - https
+basePath: /
 #API endpoints
 paths:
-
   #clients component
   /clients/accounttype:
     get:
