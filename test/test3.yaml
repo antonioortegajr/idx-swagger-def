@@ -6,9 +6,17 @@ info:
   version: "1.4.0"
 # the domain of the service
 host: api.idxsandbox.com
-# array of all schemes that your API supports  
+# array of all schemes that your API supports
 schemes:
   - https
+# will be prefixed to all paths
+consumes:
+  - application/json
+  - text/xml
+produces:
+  - application/json
+  - text/html
+basePath: /
 #API endpoints
 paths:
   #clients component
