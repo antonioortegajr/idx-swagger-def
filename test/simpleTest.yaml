@@ -1,0 +1,22 @@
+---
+swagger: '2.0'
+info:
+  version: 0.0.0
+  title: Simple API
+host: api.idxsandbox.com
+# array of all schemes that your API supports
+consumes:
+  - application/json
+  - text/xml
+produces:
+  - application/json
+  - text/html
+schemes:
+  - https
+basePath: /
+paths:
+  /clients/accounttype:
+    get:
+      responses:
+        200:
+          description: OK
