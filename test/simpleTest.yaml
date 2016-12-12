@@ -7,8 +7,7 @@ host: api.idxsandbox.com
 # array of all schemes that your API supports
 consumes:
   - text/xml
-produces:
-  - text/html
+  - application/json
 schemes:
   - https
 basePath: /
