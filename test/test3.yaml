@@ -25,6 +25,7 @@ paths:
       summary: Your account type.
       description: Get your IDX Broker account type. This does not return JSON or XML.
       parameters:
+        - $ref: "#parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
