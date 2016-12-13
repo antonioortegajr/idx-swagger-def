@@ -11,9 +11,9 @@ schemes:
   - https
 # will be prefixed to all paths
 consumes:
-  - */*
+  - application/*
 produces:
-  - */*
+  - application/*
 basePath: /
 #API endpoints
 paths:
