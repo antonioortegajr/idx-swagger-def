@@ -3528,6 +3528,13 @@ paths:
 
 #default paramaters
 parameters:
+  contentType:
+    name: Content-Type
+    in: header
+    description: Required header
+    required: true
+    type: string
+    default: application/x-www-form-urlencoded
   accesskey:
     name: accesskey
     in: header
