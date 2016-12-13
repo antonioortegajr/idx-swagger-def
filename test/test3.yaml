@@ -68,6 +68,7 @@ paths:
       summary: Agent information
       description: View agent information on a multi-user account.
       parameters:
+        - $ref: "#parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
@@ -129,6 +130,7 @@ paths:
       summary: Default API version
       description: Get the default API version. This does not return JSON or XML
       parameters:
+        - $ref: "#parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/version"
