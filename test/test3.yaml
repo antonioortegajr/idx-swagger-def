@@ -26,8 +26,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -69,8 +69,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: filterField
           in: query
           description: Field to use when filtering output.
@@ -131,8 +131,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -174,8 +174,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - in: path
           name: listID
           description: If no ID is given a list of IDs is returned.
@@ -225,8 +225,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -268,8 +268,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - in: path
           name: listID
           description: If no ID is given a list of IDs is returned.
@@ -317,8 +317,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -361,8 +361,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: dynamicURL
           in: query
           description: dynamic wrapper url.
@@ -420,8 +420,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - $ref: "#/parameters/limit"
@@ -470,8 +470,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -511,8 +511,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -552,8 +552,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -596,8 +596,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -639,8 +639,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -682,8 +682,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -726,8 +726,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       responses:
         200:
           description: Success
@@ -807,8 +807,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: savedLinksID
           in: path
           required: true
@@ -855,8 +855,8 @@ paths:
       description: Remove a new client saved link.
       parameters:
         - $ref: "#/parameters/accesskey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: savedLinksID
           in: path
           required: true
@@ -902,8 +902,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -945,8 +945,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: listingID
           in: path
           required: true
@@ -991,8 +991,8 @@ paths:
       description: Update an existing supplemental listing. If updating images, existing images are deleted and the new images are inserted instead for the listing.
       parameters:
         - $ref: "#/parameters/accesskey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: listingID
           in: path
           required: true
@@ -1042,8 +1042,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -1123,8 +1123,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/rf"
       tags:
         - Clients
@@ -1167,8 +1167,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/rf"
       tags:
         - Clients
@@ -1211,8 +1211,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -1255,8 +1255,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: listID
           in: path
           required: true
@@ -1308,8 +1308,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1349,8 +1349,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1392,8 +1392,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1433,8 +1433,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1476,8 +1476,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1519,8 +1519,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1562,8 +1562,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1605,8 +1605,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1648,8 +1648,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: noteID
           in: path
@@ -1695,8 +1695,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: noteID
           in: path
@@ -1744,8 +1744,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: noteID
           in: path
@@ -1793,8 +1793,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
       tags:
         - Leads
@@ -1837,8 +1837,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: propertyID
           in: path
@@ -1884,8 +1884,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: propertyID
           in: path
@@ -1933,8 +1933,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: propertyID
           in: path
@@ -1982,8 +1982,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
       tags:
         - Leads
@@ -2026,8 +2026,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: searchID
           in: path
@@ -2073,8 +2073,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: searchID
           in: path
@@ -2122,8 +2122,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: searchID
           in: path
@@ -2171,8 +2171,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
       tags:
         - Leads
@@ -2217,8 +2217,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - $ref: "#/parameters/rf"
       tags:
@@ -2262,8 +2262,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
@@ -2306,8 +2306,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2358,8 +2358,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2410,8 +2410,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - MLS
       responses:
@@ -2453,8 +2453,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - MLS
       responses:
@@ -2496,8 +2496,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - $ref: "#/parameters/rf"
       tags:
@@ -2541,8 +2541,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: countType
           in: query
@@ -2596,8 +2596,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2648,8 +2648,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2700,8 +2700,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2761,8 +2761,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2813,8 +2813,8 @@ paths:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2866,8 +2866,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
         - $ref: "#/parameters/offset"
@@ -2915,8 +2915,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: dateType
           in: query
           description: There are several dates associated with a lead, this will specify is being used to return information. If no value is specified dateAdded will be used.
@@ -2973,8 +2973,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: dateType
           in: query
           description: There are several dates associated with a lead, this will specify is being used to return information. If no value is specified subscribeDate will be used.
@@ -3030,8 +3030,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - $ref: "#/parameters/clientChunk"
@@ -3079,8 +3079,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: filterField
           in: query
           description: The field to use when filtering output..
@@ -3135,8 +3135,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3193,8 +3193,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3251,8 +3251,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3309,8 +3309,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3368,8 +3368,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Partners
       responses:
@@ -3410,8 +3410,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: filterField
           in: query
           description: Field to use when filtering output.
@@ -3464,8 +3464,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Partners
       responses:
@@ -3506,8 +3506,8 @@ paths:
       parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Partners
       responses:
@@ -3548,8 +3548,8 @@ paths:
         parameters:
         - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - $ref: "#/parameters/rf"
         tags:
@@ -3612,14 +3612,14 @@ parameters:
     type: string
     minLength: 22
     maxLength: 22
-  version:
+  apiversion:
     name: version
     in: header
     description: Version of the API to call.
     required: false
     type: string
     default: "1.2.3"
-  output:
+  outputtype:
     name: output
     in: header
     description: Request JSON or XML.
