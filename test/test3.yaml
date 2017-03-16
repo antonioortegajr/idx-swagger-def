@@ -3605,7 +3605,7 @@ parameters:
     maxLength: 22
   ancillarykey:
     #This key is referred to as both ancillary and Partner key.
-    name: partnerkey
+    name: ancillarykey
     in: header
     description: Your Developer Partner API Key.
     required: false
@@ -3613,14 +3613,14 @@ parameters:
     minLength: 22
     maxLength: 22
   apiversion:
-    name: version
+    name: apiversion
     in: header
     description: Version of the API to call.
     required: false
     type: string
     default: "1.2.3"
   outputtype:
-    name: output
+    name: outputtype
     in: header
     description: Request JSON or XML.
     required: false
