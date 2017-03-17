@@ -65,7 +65,6 @@ paths:
       summary: Agent information
       description: View agent information on a multi-user account.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -127,7 +126,6 @@ paths:
       summary: Default API version
       description: Get the default API version. This does not return JSON or XML
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -170,7 +168,6 @@ paths:
       summary: Client city list data. ID required in this tester, but not in your scripting.
       description: Returns the cities available in each of a client's city lists. Since a client can build any number of city lists this method requires the ID of which list you want to view. To get a list of all city lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -221,7 +218,6 @@ paths:
       summary: IDs and names for each of a client's city lists
       description: Returns the IDs and names for each of a client's city lists including MLS city lists. To get the list of all city lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS Note that this method was previously camelcased as "citiesListName" but was made lower case to fit the API naming convention. Calls to "citiesListName" will be forwarded to "citieslistname" and "citiesListName" is listed as deprecated in the method list.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -264,7 +260,6 @@ paths:
       summary: Counties information. ID required in this tester, but not in your scripting.
       description: Returns the counties available in each of a client's county lists. Since a client can build any number of county lists this method requires the ID of which list you want to view. To get a list of all county lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -313,7 +308,6 @@ paths:
       summary: IDs and names for each of a client's counties lists
       description: Returns the IDs and names for each of a client's counties lists including MLS counties lists. To get the list of all counties lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -357,7 +351,6 @@ paths:
       summary: Update dynamic wrapper url
       description: Update dynamic wrapper url for global, pages and saved links. If savedLinkID, or pageID are not passed, the global dynamic wrapper url will be updated.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -465,7 +458,6 @@ paths:
       summary: allowed returnable fields for a given listingID.
       description: Returns the allowed returnable fields for a given listingID..
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -506,7 +498,6 @@ paths:
       summary: componant information
       description: View componant information.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -547,7 +538,6 @@ paths:
       summary: all available methods in the current API component
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -591,7 +581,6 @@ paths:
       summary: offices information
       description: IDX data for an office.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -634,7 +623,6 @@ paths:
       summary: client's postalcode lists
       description: Returns the postalcodes available in each of a client's postalcode lists. Since a client can build any number of postalcode lists this method requires the ID of which list you want to view. To get a list of all postalcode lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS. Note that this method was previously called as "zipcodes" but was changed to keep API format more international. Calls to "zipcodes" will be forwarded to "postalcodes" and "zipcodes" is listed as deprecated in the method list.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -677,7 +665,6 @@ paths:
       summary: postalcode information
       description: Returns the IDs and names for each of a client's postalcode lists including MLS postalcode lists. To get the list of all postal code lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -721,7 +708,6 @@ paths:
       summary: saved links information
       description: Get saved links for a given client account.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -802,7 +788,6 @@ paths:
       summary: Update an existing client's saved link
       description: Update an existing client's saved link. This method is to be used at your own risk. We will NOT be held accountable for programmatic errors in your code or the improper use of search values or options within said values resulting in broken saved links.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -897,7 +882,6 @@ paths:
       summary: sold and pending properties information
       description: Returns a basic set of information for all of the client's sold and pending properties. That is, those that have been removed from their MLS data.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -940,7 +924,6 @@ paths:
       summary: remove a supplemental listing
       description: Remove a supplemental listing from the account.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1037,7 +1020,6 @@ paths:
       summary: supplemental properties information
       description: Get supplemental properties information for a given client account.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1118,7 +1100,6 @@ paths:
       summary: system pages
       description: Gathers all the pages system pages (search, featured, contact, etc) that can be directly linked to without additional property information being included in the URL.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1162,7 +1143,6 @@ paths:
       summary: URLs for javascript widgets
       description: Gather all the URLs for javascript widgets on the user account. These widgets can then be placed on the user's main site via the included URLs.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1206,7 +1186,6 @@ paths:
       summary: clear wrapper cache
       description: clear wrapper cache.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1250,7 +1229,6 @@ paths:
       summary: zipcodes available in each of a client's zipcode lists
       description: Returns the zipcodes available in each of a client's zipcode lists. Since a client can build any number of zipcode lists this method requires the ID of which list you want to view. To get a list of all zipcode lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1303,7 +1281,6 @@ paths:
       summary: Update an existing client's saved links
       description: Update an existing client's saved link. This method is to be used at your own risk. We will NOT be held accountable for programmatic errors in your code or the improper use of search values or options within said values resulting in broken saved links.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1387,7 +1364,6 @@ paths:
       summary: Remove a lead system wide
       description: This method is to be used at your own risk. We will NOT be held accountable for programmatic errors in your code or the improper use of search values or options within said values resulting in deletion of leads.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1514,7 +1490,6 @@ paths:
       summary: Create a new lead
       description: Currently the API cannot differentiate between a lead rejected due to server error or one rejected due to bad email address. The lead system requires email addresses that are correctly formatted to cut down on garbage accounts, and they need to have a valid MX record. Most 500 error from this method are a result of bad email addresses. In future versions we will differentiate the error and make the MX record requirement optional.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1557,7 +1532,6 @@ paths:
       summary: list of all API components available
       description: This is a simple, access anywhere, method for getting a list of all API components available.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1600,7 +1574,6 @@ paths:
       summary: Listing all available methods in the current API component
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1643,7 +1616,6 @@ paths:
       summary: Remove a lead note
       description: Remove a lead note.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1788,7 +1760,6 @@ paths:
       summary: Create a new lead note
       description: Create a new lead note.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1832,7 +1803,6 @@ paths:
       summary: Remove a lead saved property
       description: Remove a lead saved property.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -1977,7 +1947,6 @@ paths:
       summary: Create a new lead property
       description: Create a new lead property.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2021,7 +1990,6 @@ paths:
       summary: Remove a lead property
       description: Remove a lead property.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2166,7 +2134,6 @@ paths:
       summary: Create a new lead note
       description: Create a new lead note.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2212,7 +2179,6 @@ paths:
       summary: Last MLS refresh
       description: Gives the date and time a particular MLS was last downloaded, processed and the last time images gathering was completed. Dates/times given are UTC
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2257,7 +2223,6 @@ paths:
       summary: Last MLS refresh
       description: This method provides all of the IDX IDs and names for all of the paperwork approved MLSs on the client's account. Note this method was previously camelcased as "approvedMLS" but was made lower case to fit the API naming convention. Calls to "approvedMLS" will be forwarded to "approvedmls" and "approvedMLS" is listed as deprecated in the method list.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2301,7 +2266,6 @@ paths:
       summary: Cities in an MLS
       description: All cities represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2353,7 +2317,6 @@ paths:
       summary: Counties in an MLS
       description: All counties represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2405,7 +2368,6 @@ paths:
       summary: List of all MLS API components
       description: This is a simple, access anywhere, method for getting a list of all API components available.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2448,7 +2410,6 @@ paths:
       summary: List of all MLS API methods
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2491,7 +2452,6 @@ paths:
       summary: total of properties listed in a given MLS
       description: The sum total of properties listed in a given MLS as well as sums for each property type in the MLS.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2536,7 +2496,6 @@ paths:
       summary: Total number of listings available for a given city, county, or zipcode.
       description: Gives a total number of listings available for a given city, county, or zipcode.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2591,7 +2550,6 @@ paths:
       summary: Property type information for all types
       description: Gives the property type information for all types that are available on a given MLS.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2643,7 +2601,6 @@ paths:
       summary: Seach Fields Data
       description: All the fields in a given MLS that are currently allowed to be searched according to MLS guidelines.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2695,7 +2652,6 @@ paths:
       summary: Seach Field Values
       description: Field values in a given MLS that are currently allowed to be searched according to MLS guidelines.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2756,7 +2712,6 @@ paths:
       summary: All zip codes represented in the current set of MLS data
       description: All zip codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2808,7 +2763,6 @@ paths:
       summary: All postal codes represented in the current set of MLS data
       description: All postal codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
@@ -2862,7 +2816,6 @@ paths:
       summary: Get a list of all agents for your clients.
       description: Get a list of all agents for your clients.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -2911,7 +2864,6 @@ paths:
       summary: Get a list of featured MLS properties.
       description: Get a list of featured MLS properties. Output fields may or may not be populated depending on how the information was entered into the IDX system.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -2969,7 +2921,6 @@ paths:
       summary: Get a list of all leads.
       description: Get a list of featured MLS properties. For bandwidth and memory considerations there is a limit of 5,000 on the number of leads that can be returned in any single request. Even if a full week of data is requested this limit will only be encountered if your clients have a combined average 30+ leads created, updated, or active per hour (as such it will be most common when requesting leads based on last property update date). If this limit is exceeded a 413 -Requested Entity Too Large error is returned. If encountered a smaller interval will need to be used.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3026,7 +2977,6 @@ paths:
       summary: Get a list of all leads traffic history.
       description: Get a list of all leads traffic history. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3075,7 +3025,6 @@ paths:
       summary: MLS listings (not supplemental) by client account ID.
       description: This method gives the status for all MLS listings (not supplemental) broken down by client account ID. This includes sold/pending listings with an unknown status which are not usually returned by sold/pending api methods. This is helpful if you need to know when previously gathered featured properties have left the market.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3131,7 +3080,6 @@ paths:
       summary: All lead saved properties.
       description: Get a list of all lead saved properties. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3189,7 +3137,6 @@ paths:
       summary: All lead saved searches.
       description: Get a list of all lead saved searches. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3247,7 +3194,6 @@ paths:
       summary: Sold/pending MLS properties.
       description: Get a list of sold/pending MLS properties. Output fields may or may not be populated depending on how the information was entered into the IDX system. We are planning to add the ability to query by the date the property left the market and, for sold listings, the date it was sold in a future update.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3305,7 +3251,6 @@ paths:
       summary: Supplemental (non-MLS) properties
       description: Get a list of supplemental (non-MLS) properties. Output fields may or may not be populated depending on how the information was entered into the IDX system.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3364,7 +3309,6 @@ paths:
       summary: Get the default api version.
       description: Get the default api version.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3406,7 +3350,6 @@ paths:
       summary: Client List
       description: A list of clients available to a given partner. The list of clients can be filtered by GET values.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3460,7 +3403,6 @@ paths:
       summary: List of all API components available
       description: This is a simple, access anywhere, method for getting a list of all API components available.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3502,7 +3444,6 @@ paths:
       summary: Listing all available methods
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3544,7 +3485,6 @@ paths:
         summary: Names and IDs of all available property types.
         description: Gives the names and IDs of all available property types. This method differs from the property type lookup method in the client API component in that it can look up property types for any active Platinum MLS, not just those for which the client is a member. The IDX property types are those used for multiple MLS searches and are equivalent to the property types used in the original IDX product.
         parameters:
-        - $ref: "#/parameters/contentType"
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
@@ -3586,13 +3526,6 @@ paths:
 
 #default paramaters
 parameters:
-  contentType:
-    name: Content-Type
-    in: header
-    description: Required header
-    required: true
-    type: string
-    default: application/x-www-form-urlencoded
   accesskey:
     name: accesskey
     in: header
