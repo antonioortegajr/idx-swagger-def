@@ -10,9 +10,9 @@ host: nyh7dfzmxa.execute-api.us-west-2.amazonaws.com
 schemes:
   - https
 consumes:
-  - application/*
+  - application/json
 produces:
-  - application/*
+  - application/json
 # will be prefixed to all paths
 basePath: /ready
 #API endpoints
