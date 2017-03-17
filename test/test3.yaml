@@ -12,7 +12,7 @@ schemes:
 consumes:
   - */*
 produces:
-  - application/*
+  - */*
 # will be prefixed to all paths
 basePath: /ready
 #API endpoints
