@@ -14,7 +14,7 @@ consumes:
 produces:
   - application/json
 # will be prefixed to all paths
-basePath: /ready
+basePath: /testStage
 #API endpoints
 paths:
   #clients component
