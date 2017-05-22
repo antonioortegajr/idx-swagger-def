@@ -14,7 +14,7 @@ consumes:
 produces:
   - application/json
 # will be prefixed to all paths
-basePath: wordpress/wp-json/swagger-proxy/v1
+basePath: /wordpress/wp-json/swagger-proxy/v1
 #API endpoints
 paths:
   #clients component
