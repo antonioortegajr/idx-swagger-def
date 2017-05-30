@@ -5,7 +5,7 @@ info:
   description: Only GET calls available for live testing. Visit http://developers.idxbroker.com/idx-broker-api/ for more on this API. Structure descriptions along with sample code available.
   version: "1.4.0"
 # the domain of the service
-host: 3662e3a7.ngrok.io
+host: bd71cbf2.ngrok.io
 # array of all schemes that your API supports
 schemes:
   - https
