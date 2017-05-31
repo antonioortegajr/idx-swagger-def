@@ -424,7 +424,7 @@ paths:
         200:
           description: Success
         204:
-          description: Required parameter missing or invalid.
+          description: Success, nothing to return.
         400:
           description: Required parameter missing or invalid.
         401:
@@ -2220,7 +2220,7 @@ paths:
           description: Temporary error. There is a possibility that not all API methods are affected.
   /mls/approvedmls:
     get:
-      summary: Last MLS refresh
+      summary: approved MLSs
       description: This method provides all of the IDX IDs and names for all of the paperwork approved MLSs on the client's account. Note this method was previously camelcased as "approvedMLS" but was made lower case to fit the API naming convention. Calls to "approvedMLS" will be forwarded to "approvedmls" and "approvedMLS" is listed as deprecated in the method list.
       parameters:
         - $ref: "#/parameters/accesskey"
