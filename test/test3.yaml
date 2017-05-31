@@ -3529,7 +3529,7 @@ parameters:
   accesskey:
     name: accesskey
     in: header
-    description: REQUIRED Your client level API Key.
+    description: REQUIRED Your API Key.
     required: true
     type: string
     minLength: 22
