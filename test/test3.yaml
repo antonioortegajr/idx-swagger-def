@@ -3549,7 +3549,7 @@ parameters:
     description: Version of the API to call.
     required: false
     type: string
-    default: "1.2.3"
+    default: "1.4.0"
   outputtype:
     name: outputtype
     in: header
@@ -3557,6 +3557,7 @@ parameters:
     required: false
     enum: ["json", "xml"]
     type: string
+    default: "json"
   interval:
     name: interval
     in: query
