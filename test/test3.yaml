@@ -3624,6 +3624,12 @@ parameters:
     required: true
     type: string
     minLength: 4
+  listingID:
+    name: listingID
+    in: path
+    description: The idx id of a listing.
+    required: false
+    type: string
   disclaimers:
     name: disclaimers
     in: query
