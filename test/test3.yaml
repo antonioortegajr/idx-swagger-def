@@ -3629,8 +3629,8 @@ parameters:
   listingID:
     name: listingID
     in: path
-    description: The idx id of a listing.
-    required: false
+    description: The idx id of a property listing.
+    required: true
     type: string
   disclaimers:
     name: disclaimers
