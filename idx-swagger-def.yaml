@@ -5,16 +5,18 @@ info:
   description: Only GET calls available for live testing. Visit http://developers.idxbroker.com/idx-broker-api/ for more on this API. Structure descriptions along with sample code available.
   version: "1.4.0"
 # the domain of the service
-host: nyh7dfzmxa.execute-api.us-west-2.amazonaws.com/ready
+host: developers.idxbroker.com
 # array of all schemes that your API supports
 schemes:
   - https
-# will be prefixed to all paths
+consumes:
+  - application/json
 produces:
-  - application/x-www-form-urlencoded
+  - application/json
+# will be prefixed to all paths
+basePath: /wp-json/swagger-proxy/v1
 #API endpoints
 paths:
-
   #clients component
   /clients/accounttype:
     get:
@@ -23,8 +25,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -65,8 +67,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: filterField
           in: query
           description: Field to use when filtering output.
@@ -83,7 +85,7 @@ paths:
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - $ref: "#/parameters/rf"
-          
+
       tags:
         - Clients
       responses:
@@ -126,8 +128,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -168,8 +170,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - in: path
           name: listID
           description: If no ID is given a list of IDs is returned.
@@ -218,8 +220,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -260,8 +262,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - in: path
           name: listID
           description: If no ID is given a list of IDs is returned.
@@ -301,15 +303,15 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/counties/listname:
+  /clients/countieslistname:
     get:
       summary: IDs and names for each of a client's counties lists
       description: Returns the IDs and names for each of a client's counties lists including MLS counties lists. To get the list of all counties lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -351,8 +353,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: dynamicURL
           in: query
           description: dynamic wrapper url.
@@ -409,8 +411,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - $ref: "#/parameters/limit"
@@ -422,7 +424,7 @@ paths:
         200:
           description: Success
         204:
-          description: Required parameter missing or invalid.
+          description: Success, nothing to return.
         400:
           description: Required parameter missing or invalid.
         401:
@@ -451,15 +453,17 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/http:/listallowedfields:
+  /clients/listallowedfields/{idxID}/{listingID}:
     get:
       summary: allowed returnable fields for a given listingID.
-      description: Returns the allowed returnable fields for a given listingID..
+      description: Returns the allowed returnable fields for a given listingID.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
+        - $ref: "#/parameters/idxID"
+        - $ref: "#/parameters/listingID"
       tags:
         - Clients
       responses:
@@ -498,8 +502,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -538,8 +542,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -581,8 +585,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -616,15 +620,20 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/postalcodes/listID:
+  /clients/postalcodes/{listID}:
     get:
       summary: client's postalcode lists
       description: Returns the postalcodes available in each of a client's postalcode lists. Since a client can build any number of postalcode lists this method requires the ID of which list you want to view. To get a list of all postalcode lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS. Note that this method was previously called as "zipcodes" but was changed to keep API format more international. Calls to "zipcodes" will be forwarded to "postalcodes" and "zipcodes" is listed as deprecated in the method list.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
+        - name: listID
+          in: path
+          required: true
+          description: The numeric id of a client zipcode listID.
+          type: number
       tags:
         - Clients
       responses:
@@ -665,8 +674,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -708,8 +717,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       responses:
         200:
           description: Success
@@ -788,8 +797,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: savedLinksID
           in: path
           required: true
@@ -836,8 +845,8 @@ paths:
       description: Remove a new client saved link.
       parameters:
         - $ref: "#/parameters/accesskey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: savedLinksID
           in: path
           required: true
@@ -882,8 +891,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -924,8 +933,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: listingID
           in: path
           required: true
@@ -970,8 +979,8 @@ paths:
       description: Update an existing supplemental listing. If updating images, existing images are deleted and the new images are inserted instead for the listing.
       parameters:
         - $ref: "#/parameters/accesskey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: listingID
           in: path
           required: true
@@ -1020,8 +1029,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Clients
       responses:
@@ -1100,8 +1109,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/rf"
       tags:
         - Clients
@@ -1143,8 +1152,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/rf"
       tags:
         - Clients
@@ -1186,8 +1195,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
 
       tags:
         - Clients
@@ -1229,8 +1238,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: listID
           in: path
           required: true
@@ -1281,8 +1290,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1322,8 +1331,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1364,8 +1373,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1405,8 +1414,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1448,8 +1457,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1490,8 +1499,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1532,8 +1541,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1574,8 +1583,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Leads
       responses:
@@ -1616,8 +1625,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: noteID
           in: path
@@ -1663,8 +1672,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: noteID
           in: path
@@ -1712,8 +1721,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: noteID
           in: path
@@ -1760,8 +1769,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
       tags:
         - Leads
@@ -1803,8 +1812,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: propertyID
           in: path
@@ -1850,8 +1859,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: propertyID
           in: path
@@ -1899,8 +1908,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: propertyID
           in: path
@@ -1947,8 +1956,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
       tags:
         - Leads
@@ -1990,8 +1999,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: searchID
           in: path
@@ -2037,8 +2046,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: searchID
           in: path
@@ -2086,8 +2095,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
         - name: searchID
           in: path
@@ -2127,15 +2136,15 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/search{leadID}:
+  /leads/search/{leadID}:
     put:
       summary: Create a new lead note
       description: Create a new lead note.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/leadID"
       tags:
         - Leads
@@ -2179,8 +2188,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - $ref: "#/parameters/rf"
       tags:
@@ -2218,13 +2227,13 @@ paths:
           description: Temporary error. There is a possibility that not all API methods are affected.
   /mls/approvedmls:
     get:
-      summary: Last MLS refresh
+      summary: approved MLSs
       description: This method provides all of the IDX IDs and names for all of the paperwork approved MLSs on the client's account. Note this method was previously camelcased as "approvedMLS" but was made lower case to fit the API naming convention. Calls to "approvedMLS" will be forwarded to "approvedmls" and "approvedMLS" is listed as deprecated in the method list.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/rf"
       tags:
         - MLS
@@ -2266,8 +2275,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2317,8 +2326,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2368,8 +2377,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - MLS
       responses:
@@ -2410,8 +2419,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - MLS
       responses:
@@ -2452,8 +2461,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - $ref: "#/parameters/rf"
       tags:
@@ -2496,8 +2505,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: countType
           in: query
@@ -2550,8 +2559,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2601,8 +2610,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2652,8 +2661,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2671,7 +2680,7 @@ paths:
           description: mls field name - the IDX assigned name of the MLS field name. See the searchfields for the list of searchable fields.
           required: false
           type: string
-        
+
       tags:
         - MLS
       responses:
@@ -2712,8 +2721,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2763,8 +2772,8 @@ paths:
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - name: filterField
           in: query
@@ -2814,9 +2823,9 @@ paths:
       summary: Get a list of all agents for your clients.
       description: Get a list of all agents for your clients.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
         - $ref: "#/parameters/offset"
@@ -2862,9 +2871,9 @@ paths:
       summary: Get a list of featured MLS properties.
       description: Get a list of featured MLS properties. Output fields may or may not be populated depending on how the information was entered into the IDX system.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: dateType
           in: query
           description: There are several dates associated with a lead, this will specify is being used to return information. If no value is specified dateAdded will be used.
@@ -2919,9 +2928,9 @@ paths:
       summary: Get a list of all leads.
       description: Get a list of featured MLS properties. For bandwidth and memory considerations there is a limit of 5,000 on the number of leads that can be returned in any single request. Even if a full week of data is requested this limit will only be encountered if your clients have a combined average 30+ leads created, updated, or active per hour (as such it will be most common when requesting leads based on last property update date). If this limit is exceeded a 413 -Requested Entity Too Large error is returned. If encountered a smaller interval will need to be used.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: dateType
           in: query
           description: There are several dates associated with a lead, this will specify is being used to return information. If no value is specified subscribeDate will be used.
@@ -2933,8 +2942,8 @@ paths:
         - $ref: "#/parameters/rf"
         - $ref: "#/parameters/clientChunk"
         - $ref: "#/parameters/includeDisabledAccounts"
-        
-          
+
+
       tags:
         - Partners
       responses:
@@ -2975,9 +2984,9 @@ paths:
       summary: Get a list of all leads traffic history.
       description: Get a list of all leads traffic history. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - $ref: "#/parameters/clientChunk"
@@ -3023,9 +3032,9 @@ paths:
       summary: MLS listings (not supplemental) by client account ID.
       description: This method gives the status for all MLS listings (not supplemental) broken down by client account ID. This includes sold/pending listings with an unknown status which are not usually returned by sold/pending api methods. This is helpful if you need to know when previously gathered featured properties have left the market.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: filterField
           in: query
           description: The field to use when filtering output..
@@ -3078,9 +3087,9 @@ paths:
       summary: All lead saved properties.
       description: Get a list of all lead saved properties. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3135,9 +3144,9 @@ paths:
       summary: All lead saved searches.
       description: Get a list of all lead saved searches. For bandwidth and memory considerations there is a limit of 5,000 on the number of searches that can be returned in any single request.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3192,9 +3201,9 @@ paths:
       summary: Sold/pending MLS properties.
       description: Get a list of sold/pending MLS properties. Output fields may or may not be populated depending on how the information was entered into the IDX system. We are planning to add the ability to query by the date the property left the market and, for sold listings, the date it was sold in a future update.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3249,9 +3258,9 @@ paths:
       summary: Supplemental (non-MLS) properties
       description: Get a list of supplemental (non-MLS) properties. Output fields may or may not be populated depending on how the information was entered into the IDX system.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/interval"
         - $ref: "#/parameters/startDatetime"
         - name: dateType
@@ -3266,7 +3275,7 @@ paths:
         - $ref: "#/parameters/offset"
         - $ref: "#/parameters/limit"
         - $ref: "#/parameters/disclaimers"
-        
+
       tags:
         - Partners
       responses:
@@ -3307,9 +3316,9 @@ paths:
       summary: Get the default api version.
       description: Get the default api version.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Partners
       responses:
@@ -3348,9 +3357,9 @@ paths:
       summary: Client List
       description: A list of clients available to a given partner. The list of clients can be filtered by GET values.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - name: filterField
           in: query
           description: Field to use when filtering output.
@@ -3401,9 +3410,9 @@ paths:
       summary: List of all API components available
       description: This is a simple, access anywhere, method for getting a list of all API components available.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Partners
       responses:
@@ -3442,9 +3451,9 @@ paths:
       summary: Listing all available methods
       description: A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status.
       parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
       tags:
         - Partners
       responses:
@@ -3483,9 +3492,9 @@ paths:
         summary: Names and IDs of all available property types.
         description: Gives the names and IDs of all available property types. This method differs from the property type lookup method in the client API component in that it can look up property types for any active Platinum MLS, not just those for which the client is a member. The IDX property types are those used for multiple MLS searches and are equivalent to the property types used in the original IDX product.
         parameters:
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/version"
-        - $ref: "#/parameters/output"
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
         - $ref: "#/parameters/rf"
         tags:
@@ -3527,34 +3536,35 @@ parameters:
   accesskey:
     name: accesskey
     in: header
-    description: REQUIRED Your client level API Key.
+    description: REQUIRED Your API Key.
     required: true
     type: string
     minLength: 22
     maxLength: 22
   ancillarykey:
     #This key is referred to as both ancillary and Partner key.
-    name: partnerkey
+    name: ancillarykey
     in: header
     description: Your Developer Partner API Key.
     required: false
     type: string
     minLength: 22
     maxLength: 22
-  version:
-    name: version
+  apiversion:
+    name: apiversion
     in: header
     description: Version of the API to call.
     required: false
     type: string
     default: "1.4.0"
-  output:
-    name: output
+  outputtype:
+    name: outputtype
     in: header
     description: Request JSON or XML.
     required: false
     enum: ["json", "xml"]
     type: string
+    default: "json"
   interval:
     name: interval
     in: query
@@ -3620,6 +3630,13 @@ parameters:
     required: true
     type: string
     minLength: 4
+  listingID:
+    name: listingID
+    in: path
+    description: The idx id of a property listing.
+    required: true
+    type: string
+    minLength: 1
   disclaimers:
     name: disclaimers
     in: query
