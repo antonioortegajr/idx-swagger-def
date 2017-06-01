@@ -453,7 +453,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/listallowedfields:
+  /clients/listallowedfields/{idxID}:
     get:
       summary: allowed returnable fields for a given listingID.
       description: Returns the allowed returnable fields for a given listingID..
@@ -462,6 +462,7 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
+        - $ref: "#/parameters/idxID"
       tags:
         - Clients
       responses:
