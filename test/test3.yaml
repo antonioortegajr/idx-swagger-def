@@ -453,7 +453,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/listallowedfields/{idxID}:
+  /clients/listallowedfields/{idxID}/{listingID}:
     get:
       summary: allowed returnable fields for a given listingID.
       description: Returns the allowed returnable fields for a given listingID..
@@ -463,6 +463,7 @@ paths:
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
         - $ref: "#/parameters/idxID"
+        - $ref: "#/parameters/listingID"
       tags:
         - Clients
       responses:
@@ -619,7 +620,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/postalcodes/listID:
+  /clients/postalcodes/{listID}:
     get:
       summary: client's postalcode lists
       description: Returns the postalcodes available in each of a client's postalcode lists. Since a client can build any number of postalcode lists this method requires the ID of which list you want to view. To get a list of all postalcode lists available do not send the primary request ID. The default list on each account has the id combinedActiveMLS. Note that this method was previously called as "zipcodes" but was changed to keep API format more international. Calls to "zipcodes" will be forwarded to "postalcodes" and "zipcodes" is listed as deprecated in the method list.
@@ -628,6 +629,7 @@ paths:
         - $ref: "#/parameters/ancillarykey"
         - $ref: "#/parameters/apiversion"
         - $ref: "#/parameters/outputtype"
+        - $ref: "#/parameters/listID"
       tags:
         - Clients
       responses:
