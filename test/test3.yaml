@@ -456,7 +456,7 @@ paths:
   /clients/listallowedfields/{idxID}/{listingID}:
     get:
       summary: allowed returnable fields for a given listingID.
-      description: Returns the allowed returnable fields for a given listingID..
+      description: Returns the allowed returnable fields for a given listingID.
       parameters:
         - $ref: "#/parameters/accesskey"
         - $ref: "#/parameters/ancillarykey"
@@ -3632,6 +3632,7 @@ parameters:
     description: The idx id of a property listing.
     required: true
     type: string
+    minLength: 1
   disclaimers:
     name: disclaimers
     in: query
