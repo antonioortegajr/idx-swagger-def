@@ -2132,7 +2132,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /leads/search{leadID}:
+  /leads/search/{leadID}:
     put:
       summary: Create a new lead note
       description: Create a new lead note.
