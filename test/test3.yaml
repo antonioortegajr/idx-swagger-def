@@ -3553,14 +3553,14 @@ parameters:
   apiversion:
     name: apiversion
     in: header
-    description: Version of the API to call.
+    description: Version of the API to call. (Only 1.4.0 is supported in this tester)
     required: false
     type: string
     default: "1.4.0"
   outputtype:
     name: outputtype
     in: header
-    description: Request JSON or XML.
+    description: Request JSON or XML. (Only JSON is supported in this tester)
     required: false
     enum: ["json", "xml"]
     type: string
