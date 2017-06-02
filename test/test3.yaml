@@ -3352,6 +3352,46 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
+  /partners/availablemls:
+    get:
+      summary: List of available MLSs with their fees.
+      parameters:
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
+      tags:
+        - Partners
+      responses:
+        200:
+          description: Success
+        400:
+          description: Required parameter missing or invalid.
+        401:
+          description: accesskey not valid or revoked.
+        403:
+          description: URL provided is not using SSL (HTTPS).
+        404:
+          description: Invalid API component specified.
+        405:
+          description: Method requested is invalid. This usually indicates a typo or that you may be requested a method that is part of a different API component.
+        406:
+          description: accesskey not provided
+        409:
+          description: Duplicate unique data detected.
+        412:
+          description: Account is over it's hourly access limit.
+        413:
+          description: Requested entity too large.
+        416:
+          description: Requested time range not satisfiable.
+        417:
+          description: There are more saved links in the account than allowed through the API.
+        500:
+          description: General system error. Please try again later or contact IDX support.
+        503:
+          description: Scheduled or emergency API maintenance will result in 503 errors.
+        521:
+          description: Temporary error. There is a possibility that not all API methods are affected.
   /partners/clients:
     get:
       summary: Client List
