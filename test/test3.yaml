@@ -631,7 +631,7 @@ paths:
         - $ref: "#/parameters/outputtype"
         - name: listID
           in: path
-          required: true
+          required: false
           description: The numeric id of a client zipcode listID.
           type: number
       tags:
