@@ -2,7 +2,7 @@
 swagger: '2.0'
 info:
   title:  IDX Broker API
-  description: -
+  description: Valid API key required.
   version: "1.4.0"
 # the domain of the service
 host: developers.idxbroker.com
