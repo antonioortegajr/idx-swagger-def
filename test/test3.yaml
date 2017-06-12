@@ -2,7 +2,7 @@
 swagger: '2.0'
 info:
   title:  IDX Broker API
-  description: IDX Broker API Live Tester
+  description:
   version: "1.4.0"
 # the domain of the service
 host: developers.idxbroker.com
