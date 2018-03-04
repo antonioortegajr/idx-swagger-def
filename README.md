@@ -6,7 +6,7 @@ Standard Disclaimer: This code is not official IDX Broker code. It does use thei
 CORS with api.idxbroker.com is still in place
 
 ## Required
-A valide IDX Broker and or a IDX Broker Developer Partner key is required.
+A valid IDX Broker and or a IDX Broker Developer Partner key is required.
 This swagger definition should only be run at developers.idxbroker.com
 
 ## Version Support
@@ -15,11 +15,9 @@ Version 1.4.0 defined. Only the newest versions will be defined. For versions be
 ## Method Support
 PUT, POST, DELETE not supported by this definition.
 
-ALL methods that can pass an ID in the url path MUST do so. For many of these methods not passing an ID will return a reponse with avalable parametors. This is not uspported by this definition.
+ALL methods that can pass an ID in the url path MUST do so. For many of these methods not passing an ID will return a response with available parameters. This is not unsupported by this definition.
 
-Most methods inplace.
-
-Definition validatated and created at http://editor.swagger.io/#/
+Definition validated and created at http://editor.swagger.io/#/
 
 This is totes not done.
 
