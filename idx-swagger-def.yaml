@@ -2,7 +2,7 @@
 swagger: '2.0'
 info:
   title:  IDX Broker API
-  description: Only GET calls available for live testing. Visit http://developers.idxbroker.com/idx-broker-api/ for more on this API. Structure descriptions along with sample code available.
+  description: Valid API key required.
   version: "1.4.0"
 # the domain of the service
 host: developers.idxbroker.com
@@ -667,7 +667,7 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
-  /clients/postalcodes/listname:
+  /clients/postalcodeslistname:
     get:
       summary: postalcode information
       description: Returns the IDs and names for each of a client's postalcode lists including MLS postalcode lists. To get the list of all postal code lists available do not send the primary request ID. The default list on each account has the ID combinedActiveMLS
@@ -2454,6 +2454,57 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
+  /mls/postalcodes/{idxID}:
+    get:
+      summary: All postal codes represented in the current set of MLS data
+      description: All postal codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
+      parameters:
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/ancillarykey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
+        - $ref: "#/parameters/idxID"
+        - name: filterField
+          in: query
+          description: Field to use when filtering output.
+          required: false
+          enum: ["id", "stateAbrv", "mlsPtID"]
+          type: string
+        - $ref: "#/parameters/filterValue"
+        - $ref: "#/parameters/rf"
+      tags:
+        - MLS
+      responses:
+        200:
+          description: Success
+        400:
+          description: Required parameter missing or invalid.
+        401:
+          description: accesskey not valid or revoked.
+        403:
+          description: URL provided is not using SSL (HTTPS).
+        404:
+          description: Invalid API component specified.
+        405:
+          description: Method requested is invalid. This usually indicates a typo or that you may be requested a method that is part of a different API component.
+        406:
+          description: accesskey not provided
+        409:
+          description: Duplicate unique data detected.
+        412:
+          description: Account is over it's hourly access limit.
+        413:
+          description: Requested entity too large.
+        416:
+          description: Requested time range not satisfiable.
+        417:
+          description: There are more saved links in the account than allowed through the API.
+        500:
+          description: General system error. Please try again later or contact IDX support.
+        503:
+          description: Scheduled or emergency API maintenance will result in 503 errors.
+        521:
+          description: Temporary error. There is a possibility that not all API methods are affected.
   /mls/prices/{idxID}:
     get:
       summary: total of properties listed in a given MLS
@@ -2729,57 +2780,6 @@ paths:
           description: Field to use when filtering output.
           required: false
           enum: ["zipcode", "stateAbrv", "mlsPtID"]
-          type: string
-        - $ref: "#/parameters/filterValue"
-        - $ref: "#/parameters/rf"
-      tags:
-        - MLS
-      responses:
-        200:
-          description: Success
-        400:
-          description: Required parameter missing or invalid.
-        401:
-          description: accesskey not valid or revoked.
-        403:
-          description: URL provided is not using SSL (HTTPS).
-        404:
-          description: Invalid API component specified.
-        405:
-          description: Method requested is invalid. This usually indicates a typo or that you may be requested a method that is part of a different API component.
-        406:
-          description: accesskey not provided
-        409:
-          description: Duplicate unique data detected.
-        412:
-          description: Account is over it's hourly access limit.
-        413:
-          description: Requested entity too large.
-        416:
-          description: Requested time range not satisfiable.
-        417:
-          description: There are more saved links in the account than allowed through the API.
-        500:
-          description: General system error. Please try again later or contact IDX support.
-        503:
-          description: Scheduled or emergency API maintenance will result in 503 errors.
-        521:
-          description: Temporary error. There is a possibility that not all API methods are affected.
-  /mls/postalcodes/{idxID}:
-    get:
-      summary: All postal codes represented in the current set of MLS data
-      description: All postal codes represented in the current set of MLS data are available from this method. The output can be filtered using additional GET parameters.
-      parameters:
-        - $ref: "#/parameters/accesskey"
-        - $ref: "#/parameters/ancillarykey"
-        - $ref: "#/parameters/apiversion"
-        - $ref: "#/parameters/outputtype"
-        - $ref: "#/parameters/idxID"
-        - name: filterField
-          in: query
-          description: Field to use when filtering output.
-          required: false
-          enum: ["id", "stateAbrv", "mlsPtID"]
           type: string
         - $ref: "#/parameters/filterValue"
         - $ref: "#/parameters/rf"
@@ -3352,6 +3352,46 @@ paths:
           description: Scheduled or emergency API maintenance will result in 503 errors.
         521:
           description: Temporary error. There is a possibility that not all API methods are affected.
+  /partners/availablemls:
+    get:
+      summary: List of available MLSs with their fees.
+      parameters:
+        - $ref: "#/parameters/accesskey"
+        - $ref: "#/parameters/apiversion"
+        - $ref: "#/parameters/outputtype"
+      tags:
+        - Partners
+      responses:
+        200:
+          description: Success
+        400:
+          description: Required parameter missing or invalid.
+        401:
+          description: accesskey not valid or revoked.
+        403:
+          description: URL provided is not using SSL (HTTPS).
+        404:
+          description: Invalid API component specified.
+        405:
+          description: Method requested is invalid. This usually indicates a typo or that you may be requested a method that is part of a different API component.
+        406:
+          description: accesskey not provided
+        409:
+          description: Duplicate unique data detected.
+        412:
+          description: Account is over it's hourly access limit.
+        413:
+          description: Requested entity too large.
+        416:
+          description: Requested time range not satisfiable.
+        417:
+          description: There are more saved links in the account than allowed through the API.
+        500:
+          description: General system error. Please try again later or contact IDX support.
+        503:
+          description: Scheduled or emergency API maintenance will result in 503 errors.
+        521:
+          description: Temporary error. There is a possibility that not all API methods are affected.
   /partners/clients:
     get:
       summary: Client List
@@ -3553,14 +3593,14 @@ parameters:
   apiversion:
     name: apiversion
     in: header
-    description: Version of the API to call.
+    description: Version of the API to call. (Only 1.4.0 is supported in this tester)
     required: false
     type: string
     default: "1.4.0"
   outputtype:
     name: outputtype
     in: header
-    description: Request JSON or XML.
+    description: Request JSON or XML. (Only JSON is supported in this tester)
     required: false
     enum: ["json", "xml"]
     type: string
